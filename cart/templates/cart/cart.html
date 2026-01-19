@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% load currency %}
+{% load i18n %}
+{% block content %}
+<section class="section section-cart-page">
+	<div class="container">
+		<h2>{% translate "Your Cart" %}</h2>
+
+		{% if messages %}
+		{% for message in messages %}
+		<div class="alert alert-{{ message.tags }}">{{ message }}</div>
+		{% endfor %}
+		{% endif %}
+
+		{% if cart_items %}
+
+		<table class="table cart-table">
+			<thead>
+			<tr>
+				<th>{% translate "Product" %}</th>
+				<th>{% translate "Unit" %}</th>
+				<th>{% translate "Qty" %}</th>
+				<th>{% translate "Line" %}</th>
+				<th></th>
+			</tr>
+			</thead>
+			<tbody>
+			{% for item in cart_items %}
+			<tr>
+				<td>
+					<a href="{% url 'inventory:product' item.product.id %}" class="cart-product-link">
+						<img src="{{ item.product.image.url }}" alt="" />
+						{{ item.product.name }}
+					</a>
+				</td>
+				<td>{{ item.unit_cents|cents_to_dollars }}</td>
+
+				<td>
+					<form method="post" action="{% url 'cart:update_cart' item.product.id %}">
+						{% csrf_token %}
+						<input
+								type="number"
+								name="quantity"
+								value="{{ item.quantity }}"
+								min="1"
+								max="{{ item.product.quantity }}"
+						/>
+						<button type="submit" class="btn btn--secondary btn--sm">
+							{% translate "Update" %}
+						</button>
+					</form>
+				</td>
+
+				<td>{{ item.line_cents|cents_to_dollars }}</td>
+
+				<td>
+					<form method="post" action="{% url 'cart:remove_from_cart' item.product.id %}">
+						{% csrf_token %}
+						<button type="submit" class="btn btn--warning btn--sm">
+							{% translate "Remove" %}
+						</button>
+					</form>
+				</td>
+			</tr>
+			{% endfor %}
+			</tbody>
+
+			<tfoot>
+			<tr>
+				<td colspan="3"><strong>{% translate "Total" %}</strong></td>
+				<td><strong>{{ subtotal_cents|cents_to_dollars }}</strong></td>
+				<td></td>
+			</tr>
+			</tfoot>
+		</table>
+
+		<div class="cart-footer-buttons">
+			<form method="post" action="{% url 'cart:clear_cart' %}">
+				{% csrf_token %}
+				<button type="submit" class="btn">
+					{% translate "Clear Cart" %}
+				</button>
+			</form>
+
+			<a href="{% url 'cart:checkout' %}" class="btn btn--cta">
+				{% translate "Checkout" %}
+			</a>
+		</div>
+
+		{% else %}
+		<p>{% translate "Your cart is empty." %}</p>
+
+		<a href="{% url 'inventory:index' %}" class="btn btn--primary">
+			{% translate "Continue Shopping" %}
+		</a>
+		{% endif %}
+	</div>
+</section>
+{% endblock %}

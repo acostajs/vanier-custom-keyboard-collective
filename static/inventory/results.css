@@ -1,0 +1,18 @@
+.search-query {
+	color: var(--text-muted);
+	margin-bottom: 2rem;
+}
+
+.search-query strong {
+	color: #333;
+}
+
+.empty-state {
+	text-align: center;
+	padding: 3rem 1rem;
+}
+
+.empty-state p:first-child {
+	font-size: 1.25rem;
+	margin-bottom: 0.5rem;
+}

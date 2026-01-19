@@ -1,0 +1,50 @@
+/* Registration Page Layout */
+.registration-section {
+    padding: 60px 0;
+    background: #f5f7fa;
+}
+
+.registration-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.registration-card {
+    background: #fff;
+    width: 100%;
+    max-width: 500px;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* Form fields (reuse same style as login) */
+.registration-card .form-group label {
+    font-weight: 600;
+    margin-bottom: 6px;
+    display: block;
+}
+
+.registration-card .form-group input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    background: #fdfdfd;
+}
+
+/* Button */
+.registration-btn {
+    margin-top: 10px;
+    padding: 10px;
+}
+
+/* Login link */
+.login-link {
+    color: #0d6efd;
+    text-decoration: none;
+}
+
+.login-link:hover {
+    text-decoration: underline;
+}

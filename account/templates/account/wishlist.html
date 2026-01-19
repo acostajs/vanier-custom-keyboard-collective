@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block content %}
+<section class="section section-wishlist-page">
+	<div class="container">
+		<h2>{% translate "Your Wishlist" %}</h2>
+
+		{% if messages %}
+		{% for message in messages %}
+		<div class="alert alert-{{ message.tags }}">{{ message }}</div>
+		{% endfor %}
+		{% endif %}
+
+		{% if wishlist_products %}
+		<table class="table cart-table">
+			<thead>
+			<tr>
+				<th>{% translate "Product" %}</th>
+				<th>{% translate "Unit Price" %}</th>
+				<th>{% translate "Discounted Price" %}</th>
+				<th></th>
+				<th></th>
+			</tr>
+			</thead>
+			<tbody>
+			{% for product in wishlist_products %}
+			<tr>
+				<td>
+					<a href="{% url 'inventory:product' product.id %}" class="cart-product-link">
+						<img src="{{ product.image.url }}" alt="{{ product.name }}" />
+						{{ product.name }}
+					</a>
+				</td>
+				<td>{{ product.price_in_dollars }}</td>
+
+				{% if product.discounted_price_in_dollars %}
+				<td>{{ product.discounted_price_in_dollars }}</td>
+				{% endif %}
+
+				<td>
+					<form method="post" action="{% url 'account:remove_from_wishlist' product.id %}">
+						{% csrf_token %}
+						<button type="submit" class="btn btn--warning btn--sm">
+							{% translate "Remove" %}
+						</button>
+					</form>
+				</td>
+
+				<td>
+					<form method="post" action="{% url 'account:transfer_to_cart' product.id %}">
+						{% csrf_token %}
+						<button type="submit" class="btn btn--warning btn--sm">
+							{% translate "Transfer to Cart" %}
+						</button>
+					</form>
+				</td>
+			</tr>
+			{% endfor %}
+			</tbody>
+		</table>
+
+		<div class="wishlist-footer-buttons">
+			<form method="post" action="{% url 'account:clear_wishlist' %}">
+				{% csrf_token %}
+				<button type="submit" class="btn">
+					{% translate "Clear Wishlist" %}
+				</button>
+			</form>
+		</div>
+
+		{% else %}
+		<p>{% translate "Your wishlist is empty." %}</p>
+		<a href="{% url 'inventory:index' %}" class="btn btn--primary">
+			{% translate "Continue Shopping" %}
+		</a>
+		{% endif %}
+	</div>
+</section>
+{% endblock %}

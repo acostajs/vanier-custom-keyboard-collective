@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% load currency %}
+{% load i18n %}
+{% block content %}
+
+<section class="account-section">
+	<div class="container account-wrapper">
+		<div class="account-card">
+			<div class="account-avatar">{{ user.username|first|upper }}</div>
+
+			<h3 class="account-username">{{ user.username }}</h3>
+			<small class="account-subtitle">{% translate "Account Panel" %}</small>
+
+			<hr />
+
+			<div class="account-row">
+				<div class="label">{% translate "First name" %}:</div>
+				<div class="value">{{ user.first_name }}</div>
+			</div>
+
+			<div class="account-row">
+				<div class="label">{% translate "Last name" %}:</div>
+				<div class="value">{{ user.last_name }}</div>
+			</div>
+
+			<div class="account-row">
+				<div class="label">{% translate "Email" %}:</div>
+				<div class="value">{{ user.email }}</div>
+			</div>
+
+			<div class="account-row">
+				<div class="label">{% translate "User ID" %}:</div>
+				<div class="value">{{ user.id }}</div>
+			</div>
+
+			<div class="account-row mb-4">
+				<div class="label">{% translate "Authenticated" %}:</div>
+				<div class="value">
+					{% if user.is_authenticated %}
+					<span class="status-badge status-yes">{% translate "Yes" %}</span>
+					{% else %}
+					<span class="status-badge status-no">{% translate "No" %}</span>
+					{% endif %}
+				</div>
+			</div>
+
+			<hr />
+
+			<h4 class="mb-2">{% translate "My Orders" %}</h4>
+			<ul class="list-unstyled mb-4">
+				{% for order in orders %}
+				<li class="mb-2">
+					<div class="d-flex justify-content-between align-items-center p-2 border rounded-3 bg-dark-subtle">
+						<div class="small">
+							<div>
+								<strong>{% translate "Order" %} #{{ order.id }}</strong>
+								· {{ order.created_at|date:"Y-m-d H:i" }}
+							</div>
+							<div>
+								{% translate "Total" %}:
+								<strong>{{ order.total_cents|cents_to_dollars }}</strong>
+								<span class="badge bg-secondary text-uppercase ms-2">
+                                    {{ order.status }}
+                                </span>
+							</div>
+						</div>
+						<a href="{% url 'cart:order_detail' order.id %}" class="btn btn-sm btn--secondary">
+							{% translate "View" %}
+						</a>
+					</div>
+				</li>
+				{% empty %}
+				<li>{% translate "No orders yet" %}.</li>
+				{% endfor %}
+			</ul>
+
+			<a href="{% url 'account:logout' %}" class="btn btn-outline-danger w-100 mt-3 logout-btn">
+				{% translate "Logout" %}
+			</a>
+		</div>
+	</div>
+</section>
+
+{% endblock %}

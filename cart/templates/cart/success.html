@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block content %}
+<section class="section section-checkout-success">
+	<div class="container">
+		<h2>{% translate "Order Confirmed!" %}</h2>
+
+		<p>{% translate "Thank you for your purchase. Your order has been successfully placed." %}</p>
+
+		<p>{% translate "You will receive a confirmation email shortly." %}</p>
+
+		<a href="{% url 'inventory:index' %}" class="btn btn--primary">
+			{% translate "Continue Shopping" %}
+		</a>
+	</div>
+</section>
+{% endblock %}

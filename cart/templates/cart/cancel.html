@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block content %}
+<section class="section section-checkout-cancel">
+	<div class="container">
+		<h2>{% translate "Checkout Cancelled" %}</h2>
+
+		<p>{% translate "Your payment process was cancelled." %}</p>
+		<p>{% translate "If this was a mistake, you can try checking out again." %}</p>
+
+		<a href="{% url 'cart:checkout' %}" class="btn btn--primary">
+			{% translate "Checkout" %}
+		</a>
+
+		<a href="{% url 'inventory:index' %}" class="btn btn--primary">
+			{% translate "Continue Shopping" %}
+		</a>
+	</div>
+</section>
+{% endblock %}

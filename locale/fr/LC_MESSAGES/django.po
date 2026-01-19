@@ -1,0 +1,746 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-12-08 10:35-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: account/forms.py:28
+msgid "username"
+msgstr "Nom d’utilisateur"
+
+#: account/forms.py:29
+msgid "password"
+msgstr "Mot de passe"
+
+#: account/models.py:11
+msgid "address_line1"
+msgstr "Adresse ligne 1"
+
+#: account/models.py:12
+msgid "address_line2"
+msgstr "Adresse ligne 2"
+
+#: account/models.py:13
+msgid "city"
+msgstr "Ville"
+
+#: account/models.py:14
+msgid "postal_code"
+msgstr "Code postal"
+
+#: account/models.py:15
+msgid "country"
+msgstr "Pays"
+
+#: account/templates/account/account.html:12
+msgid "Account Panel"
+msgstr "Panneau du compte"
+
+#: account/templates/account/account.html:17
+msgid "First name"
+msgstr "Prénom"
+
+#: account/templates/account/account.html:22
+msgid "Last name"
+msgstr "Nom de famille"
+
+#: account/templates/account/account.html:27 cart/templates/cart/order.html:16
+msgid "Email"
+msgstr "Courriel"
+
+#: account/templates/account/account.html:32
+msgid "User ID"
+msgstr "ID utilisateur"
+
+#: account/templates/account/account.html:37
+msgid "Authenticated"
+msgstr "Authentifié"
+
+#: account/templates/account/account.html:40
+msgid "Yes"
+msgstr "Oui"
+
+#: account/templates/account/account.html:42
+msgid "No"
+msgstr "Non"
+
+#: account/templates/account/account.html:49
+msgid "My Orders"
+msgstr "Mes commandes"
+
+#: account/templates/account/account.html:56 cart/templates/cart/order.html:8
+msgid "Order"
+msgstr "Commande"
+
+#: account/templates/account/account.html:60 cart/templates/cart/cart.html:70
+#: cart/templates/cart/checkout.html:81 cart/templates/cart/order.html:54
+msgid "Total"
+msgstr "Total"
+
+#: account/templates/account/account.html:68
+msgid "View"
+msgstr "Voir"
+
+#: account/templates/account/account.html:73
+msgid "No orders yet"
+msgstr "Aucune commande pour l’instant"
+
+#: account/templates/account/account.html:78
+msgid "Logout"
+msgstr "Déconnexion"
+
+#: account/templates/account/login.html:11
+#: account/templates/account/login.html:37
+msgid "Login"
+msgstr "Connexion"
+
+#: account/templates/account/login.html:43
+msgid "No account? Register here."
+msgstr "Pas de compte ? Inscrivez-vous ici."
+
+#: account/templates/account/login.html:47
+#: account/templates/account/registration.html:35
+msgid "Forgot password?"
+msgstr "Mot de passe oublié ?"
+
+#: account/templates/account/registration.html:9
+msgid "Create an Account"
+msgstr "Créer un compte"
+
+#: account/templates/account/registration.html:25
+#: templates/partials/nav.html:34
+msgid "Register"
+msgstr "S’inscrire"
+
+#: account/templates/account/registration.html:31
+msgid "Already have an account? Log in"
+msgstr "Vous avez déjà un compte ? Connectez‑vous"
+
+#: account/templates/account/reset_password.html:12
+msgid "Forgot your password?"
+msgstr "Vous avez oublié votre mot de passe ?"
+
+#: account/templates/account/reset_password.html:15
+msgid "Enter your email and we’ll send you a reset link."
+msgstr ""
+"Entrez votre adresse courriel et nous vous enverrons un lien de "
+"réinitialisation."
+
+#: account/templates/account/reset_password.html:32
+msgid "Send reset link"
+msgstr "Envoyer le lien de réinitialisation"
+
+#: account/templates/account/reset_password.html:38
+#: account/templates/account/reset_password_submit.html:40
+msgid "Back to login"
+msgstr "Retour à la connexion"
+
+#: account/templates/account/reset_password_submit.html:12
+msgid "Set a new password"
+msgstr "Définir un nouveau mot de passe"
+
+#: account/templates/account/reset_password_submit.html:15
+msgid "Choose a new strong password."
+msgstr "Choisissez un nouveau mot de passe robuste."
+
+#: account/templates/account/reset_password_submit.html:34
+msgid "Change password"
+msgstr "Changer le mot de passe"
+
+#: account/templates/account/wishlist.html:6
+msgid "Your Wishlist"
+msgstr "Votre liste de souhaits"
+
+#: account/templates/account/wishlist.html:18 cart/templates/cart/cart.html:20
+#: cart/templates/cart/checkout.html:24 cart/templates/cart/order.html:29
+msgid "Product"
+msgstr "Produit"
+
+#: account/templates/account/wishlist.html:19
+msgid "Unit Price"
+msgstr "Prix unitaire"
+
+#: account/templates/account/wishlist.html:20
+msgid "Discounted Price"
+msgstr "Prix réduit"
+
+#: account/templates/account/wishlist.html:44 cart/templates/cart/cart.html:60
+#: cart/templates/cart/checkout.html:71
+msgid "Remove"
+msgstr "Retirer"
+
+#: account/templates/account/wishlist.html:53
+msgid "Transfer to Cart"
+msgstr "Transférer au panier"
+
+#: account/templates/account/wishlist.html:66
+msgid "Clear Wishlist"
+msgstr "Vider la liste de souhaits"
+
+#: account/templates/account/wishlist.html:72
+msgid "Your wishlist is empty."
+msgstr "Votre liste de souhaits est vide."
+
+#: account/templates/account/wishlist.html:74
+#: cart/templates/cart/cancel.html:16 cart/templates/cart/cart.html:94
+#: cart/templates/cart/checkout.html:107 cart/templates/cart/success.html:13
+msgid "Continue Shopping"
+msgstr "Continuer vos achats"
+
+#: account/views.py:86
+msgid "Invalid username or password"
+msgstr "Nom d’utilisateur ou mot de passe invalide"
+
+#: account/views.py:134
+msgid "Password reset"
+msgstr "Réinitialisation du mot de passe"
+
+#: account/views.py:148
+msgid ""
+"If an account with that email exists, a password reset link has been sent."
+msgstr ""
+"Si un compte avec ce courriel existe, un lien de réinitialisation du mot de "
+"passe a été envoyé."
+
+#: account/views.py:173
+msgid "Your password has been reset. You can now log in."
+msgstr ""
+"Votre mot de passe a été réinitialisé. Vous pouvez maintenant vous connecter."
+
+#: account/views.py:181
+msgid "The reset link is invalid or has expired."
+msgstr "Le lien de réinitialisation est invalide ou a expiré."
+
+#: account/views.py:228
+msgid "Wishlist cleared."
+msgstr "Liste de souhaits vidée."
+
+#: cart/models.py:25
+msgid "payment_id"
+msgstr "identifiant_paiement"
+
+#: cart/models.py:27
+msgid "total_cents"
+msgstr "total_cents"
+
+#: cart/models.py:29
+msgid "status"
+msgstr "statut"
+
+#: cart/models.py:34
+msgid "billing_address_line1"
+msgstr "adresse_facturation_ligne1"
+
+#: cart/models.py:37
+msgid "billing_address_line2"
+msgstr "adresse_facturation_ligne2"
+
+#: cart/models.py:40
+msgid "billing_city"
+msgstr "ville_facturation"
+
+#: cart/models.py:43
+msgid "billing_postal_code"
+msgstr "code_postal_facturation"
+
+#: cart/models.py:46
+msgid "billing_country"
+msgstr "pays_facturation"
+
+#: cart/models.py:50
+msgid "shipping_address_line1"
+msgstr "adresse_livraison_ligne1"
+
+#: cart/models.py:53
+msgid "shipping_address_line2"
+msgstr "adresse_livraison_ligne2"
+
+#: cart/models.py:56
+msgid "shipping_city"
+msgstr "ville_livraison"
+
+#: cart/models.py:59
+msgid "shipping_postal_code"
+msgstr "code_postal_livraison"
+
+#: cart/models.py:62
+msgid "shipping_country"
+msgstr "pays_livraison"
+
+#: cart/models.py:181 cart/models.py:246 inventory/models.py:24
+msgid "quantity"
+msgstr "quantité"
+
+#: cart/models.py:182
+msgid "unit_price_cents"
+msgstr "prix_unitaire_cents"
+
+#: cart/templates/cart/cancel.html:6
+msgid "Checkout Cancelled"
+msgstr "Paiement annulé"
+
+#: cart/templates/cart/cancel.html:8
+msgid "Your payment process was cancelled."
+msgstr "Votre processus de paiement a été annulé."
+
+#: cart/templates/cart/cancel.html:9
+msgid "If this was a mistake, you can try checking out again."
+msgstr ""
+"Si c’était une erreur, vous pouvez essayer de passer au paiement de nouveau."
+
+#: cart/templates/cart/cancel.html:12 cart/templates/cart/cart.html:86
+#: cart/templates/cart/checkout.html:7
+msgid "Checkout"
+msgstr "Passer au paiement"
+
+#: cart/templates/cart/cart.html:7
+msgid "Your Cart"
+msgstr "Votre panier"
+
+#: cart/templates/cart/cart.html:21 cart/templates/cart/checkout.html:25
+#: cart/templates/cart/order.html:30
+msgid "Unit"
+msgstr "Unité"
+
+#: cart/templates/cart/cart.html:22 cart/templates/cart/checkout.html:26
+#: cart/templates/cart/order.html:31
+msgid "Qty"
+msgstr "Qté"
+
+#: cart/templates/cart/cart.html:23 cart/templates/cart/checkout.html:27
+#: cart/templates/cart/order.html:32
+msgid "Line"
+msgstr "Ligne"
+
+#: cart/templates/cart/cart.html:49 cart/templates/cart/checkout.html:58
+msgid "Update"
+msgstr "Mettre à jour"
+
+#: cart/templates/cart/cart.html:81
+msgid "Clear Cart"
+msgstr "Vider le panier"
+
+#: cart/templates/cart/cart.html:91 cart/templates/cart/checkout.html:104
+#: cart/views.py:80
+msgid "Your cart is empty."
+msgstr "Votre panier est vide."
+
+#: cart/templates/cart/checkout.html:19
+msgid "Order Summary"
+msgstr "Récapitulatif de la commande"
+
+#: cart/templates/cart/checkout.html:28
+msgid "Actions"
+msgstr "Actions"
+
+#: cart/templates/cart/checkout.html:90
+msgid "Back to Cart"
+msgstr "Retour au panier"
+
+#: cart/templates/cart/checkout.html:96
+msgid "Proceed to Payment"
+msgstr "Procéder au paiement"
+
+#: cart/templates/cart/order.html:11
+msgid "Placed on"
+msgstr "Passée le"
+
+#: cart/templates/cart/order.html:11
+msgid "Status"
+msgstr "Statut"
+
+#: cart/templates/cart/order.html:16
+msgid "Name"
+msgstr "Nom"
+
+#: cart/templates/cart/order.html:61
+msgid "This order has no items."
+msgstr "Cette commande ne contient aucun article."
+
+#: cart/templates/cart/order.html:65
+msgid "Back to Account"
+msgstr "Retour au compte"
+
+#: cart/templates/cart/success.html:6
+msgid "Order Confirmed!"
+msgstr "Commande confirmée !"
+
+#: cart/templates/cart/success.html:8
+msgid "Thank you for your purchase. Your order has been successfully placed."
+msgstr "Merci pour votre achat. Votre commande a été passée avec succès."
+
+#: cart/templates/cart/success.html:10
+msgid "You will receive a confirmation email shortly."
+msgstr "Vous recevrez bientôt un courriel de confirmation."
+
+#: cart/views.py:91
+msgid "Payment successful! Your order has been placed."
+msgstr "Paiement réussi ! Votre commande a été passée."
+
+#: inventory/forms.py:7
+msgid "Newest first"
+msgstr "Plus récents en premier"
+
+#: inventory/forms.py:8
+msgid "Oldest first"
+msgstr "Plus anciens en premier"
+
+#: inventory/forms.py:9
+msgid "Price: High to low"
+msgstr "Prix : du plus haut au plus bas"
+
+#: inventory/forms.py:10
+msgid "Price: Low to high"
+msgstr "Prix : du plus bas au plus haut"
+
+#: inventory/forms.py:11
+#, fuzzy
+#| msgid "Discount:"
+msgid "Discount: High to low"
+msgstr "Réduction :"
+
+#: inventory/forms.py:12
+#, fuzzy
+#| msgid "Discount:"
+msgid "Discount: Low to high"
+msgstr "Réduction :"
+
+#: inventory/forms.py:13
+msgid "A to Z"
+msgstr "A à Z"
+
+#: inventory/forms.py:14
+msgid "Z to A"
+msgstr "Z à A"
+
+#: inventory/forms.py:15
+msgid "Rating: High to Low"
+msgstr "Note : du plus haut au plus bas"
+
+#: inventory/forms.py:19
+#, fuzzy
+#| msgid "Available units:"
+msgid "Availability"
+msgstr "Unités disponibles :"
+
+#: inventory/forms.py:20
+#, fuzzy
+#| msgid "Discount"
+msgid "With Discount"
+msgstr "Rabais"
+
+#: inventory/forms.py:21
+#, fuzzy
+#| msgid "Create an Account"
+msgid "Created Recently"
+msgstr "Créer un compte"
+
+#: inventory/forms.py:28
+#, fuzzy
+#| msgid "Sort by:"
+msgid "Sort by"
+msgstr "Trier par :"
+
+#: inventory/forms.py:35
+#, fuzzy
+#| msgid "Filters:"
+msgid "Filters"
+msgstr "Filtres :"
+
+#: inventory/forms.py:43 templates/partials/nav.html:24
+#, fuzzy
+#| msgid "Search Results"
+msgid "Search"
+msgstr "Résultats de recherche"
+
+#: inventory/models.py:11 inventory/models.py:22
+#, fuzzy
+#| msgid "username"
+msgid "name"
+msgstr "Nom d’utilisateur"
+
+#: inventory/models.py:12 inventory/models.py:23
+msgid "description"
+msgstr "description"
+
+#: inventory/models.py:13 inventory/models.py:25
+msgid "image"
+msgstr "image"
+
+#: inventory/models.py:26
+msgid "price"
+msgstr "prix"
+
+#: inventory/models.py:30
+#, fuzzy
+#| msgid "Discounted Price"
+msgid "discount_percentage"
+msgstr "Prix réduit"
+
+#: inventory/templates/inventory/category.html:13
+msgid "Products"
+msgstr "Produits"
+
+#: inventory/templates/inventory/category.html:21
+#: inventory/templates/inventory/index.html:35
+#: inventory/templates/inventory/results.html:23
+msgid "Sort by:"
+msgstr "Trier par :"
+
+#: inventory/templates/inventory/category.html:27
+#: inventory/templates/inventory/index.html:41
+#: inventory/templates/inventory/results.html:32
+msgid "Filters:"
+msgstr "Filtres :"
+
+#: inventory/templates/inventory/category.html:39
+#: inventory/templates/inventory/index.html:53
+#: inventory/templates/inventory/results.html:45
+msgid "Apply"
+msgstr "Appliquer"
+
+#: inventory/templates/inventory/category.html:54
+#: inventory/templates/inventory/index.html:71
+#: inventory/templates/inventory/product.html:21
+#: inventory/templates/inventory/results.html:63
+msgid "New Arrival"
+msgstr "Nouvel arrivage"
+
+#: inventory/templates/inventory/category.html:60
+#: inventory/templates/inventory/index.html:77
+#: inventory/templates/inventory/results.html:70
+msgid "Available units:"
+msgstr "Unités disponibles :"
+
+#: inventory/templates/inventory/category.html:62
+#: inventory/templates/inventory/index.html:79
+#: inventory/templates/inventory/results.html:74
+msgid "Product not available"
+msgstr "Produit non disponible"
+
+#: inventory/templates/inventory/category.html:67
+#: inventory/templates/inventory/index.html:84
+msgid "Discount"
+msgstr "Rabais"
+
+#: inventory/templates/inventory/category.html:76
+#: inventory/templates/inventory/index.html:92
+msgid "No products available."
+msgstr "Aucun produit disponible."
+
+#: inventory/templates/inventory/index.html:19
+msgid "No categories found."
+msgstr "Aucune catégorie trouvée."
+
+#: inventory/templates/inventory/index.html:27
+msgid "Available Products"
+msgstr "Produits disponibles"
+
+#: inventory/templates/inventory/product.html:39
+msgid "Quantity:"
+msgstr "Quantité :"
+
+#: inventory/templates/inventory/product.html:52
+msgid "Add to Cart"
+msgstr "Ajouter au panier"
+
+#: inventory/templates/inventory/product.html:65
+msgid "Add to Wishlist"
+msgstr "Ajouter à la liste de souhaits"
+
+#: inventory/templates/inventory/product.html:71
+#: review/templates/review/review.html:7
+msgid "Write a Review"
+msgstr "Écrire un avis"
+
+#: inventory/templates/inventory/product.html:80
+msgid "Related Products"
+msgstr "Produits associés"
+
+#: inventory/templates/inventory/product.html:83
+msgid "Category"
+msgstr "Catégorie"
+
+#: inventory/templates/inventory/product.html:98
+msgid "No related products found."
+msgstr "Aucun produit associé trouvé."
+
+#: inventory/templates/inventory/product.html:106
+msgid "Product Reviews"
+msgstr "Avis sur le produit"
+
+#: inventory/templates/inventory/product.html:111
+msgid "This review has been flagged multiple times."
+msgstr "Cet avis a été signalé plusieurs fois."
+
+#: inventory/templates/inventory/product.html:123
+msgid "Flags:"
+msgstr "Signalements :"
+
+#: inventory/templates/inventory/product.html:125
+#: review/templates/review/flag.html:31
+msgid "Flag Review"
+msgstr "Signaler l’avis"
+
+#: inventory/templates/inventory/product.html:137
+#: review/templates/review/vote.html:32
+msgid "Mark as Helpful"
+msgstr "Marquer comme utile"
+
+#: inventory/templates/inventory/product.html:140
+msgid "people found this helpful"
+msgstr "personnes ont trouvé cela utile"
+
+#: inventory/templates/inventory/product.html:145
+msgid "Write a comment"
+msgstr "Écrire un commentaire"
+
+#: inventory/templates/inventory/product.html:160
+msgid "No comments yet."
+msgstr "Aucun commentaire pour le moment."
+
+#: inventory/templates/inventory/product.html:166
+msgid "No reviews yet."
+msgstr "Aucune critique pour le moment."
+
+#: inventory/templates/inventory/results.html:7
+msgid "Search Results"
+msgstr "Résultats de recherche"
+
+#: inventory/templates/inventory/results.html:11
+msgid "Showing results for"
+msgstr "Affichage des résultats pour"
+
+#: inventory/templates/inventory/results.html:81
+msgid "Discount:"
+msgstr "Réduction :"
+
+#: inventory/templates/inventory/results.html:97
+msgid "No products found"
+msgstr "Aucun produit trouvé"
+
+#: inventory/templates/inventory/results.html:99
+msgid "for"
+msgstr "pour"
+
+#: inventory/templates/inventory/results.html:105
+msgid "Try adjusting your search or filters."
+msgstr "Essayez d'ajuster votre recherche ou vos filtres."
+
+#: review/forms.py:9 review/forms.py:21 review/models.py:19
+#: review/models.py:103
+msgid "message"
+msgstr "message"
+
+#: review/forms.py:9 review/models.py:17
+msgid "rating"
+msgstr "note"
+
+#: review/forms.py:27 review/models.py:123
+msgid "flag_type"
+msgstr "type de signalement"
+
+#: review/templates/review/comment.html:6 review/templates/review/flag.html:6
+#: review/templates/review/vote.html:7
+#, fuzzy
+#| msgid "Flag Review"
+msgid "Review by"
+msgstr "Signaler l’avis"
+
+#: review/templates/review/comment.html:11
+#, fuzzy
+#| msgid "Write a comment"
+msgid "Write a Comment"
+msgstr "Écrire un commentaire"
+
+#: review/templates/review/comment.html:31
+msgid "Post Comment"
+msgstr "Publier le commentaire"
+
+#: review/templates/review/flag.html:11
+msgid "Is this review not pertinent? Flag it"
+msgstr "Cet avis n'est pas pertinent ? Signalez-le"
+
+#: review/templates/review/review.html:26
+#, fuzzy
+#| msgid "Write a Review"
+msgid "Submit Review"
+msgstr "Écrire un avis"
+
+#: review/templates/review/review.html:31
+msgid "You must purchase this product to leave a review."
+msgstr "Vous devez acheter ce produit pour laisser un avis."
+
+#: review/templates/review/vote.html:12
+msgid "Is this review helpful?"
+msgstr "Cet avis est-il utile ?"
+
+#: templates/base.html:7 templates/partials/nav.html:14
+msgid "Custom Keyboard Collective"
+msgstr "Collectif Clavier Personnalisé"
+
+#: templates/partials/footer.html:7
+#, fuzzy
+#| msgid "Custom Keyboard Collective"
+msgid "2025 Custom Keyboard Collective. All rights reserved."
+msgstr "Collectif Clavier Personnalisé"
+
+#: templates/partials/footer.html:11
+msgid "About Us"
+msgstr "À propos de nous"
+
+#: templates/partials/footer.html:12
+msgid "Contact"
+msgstr "Contact"
+
+#: templates/partials/footer.html:13
+msgid "Privacy Policy"
+msgstr "Politique de confidentialité"
+
+#: templates/partials/nav.html:7
+msgid "Canadian-based stock – no surprise tariffs – Free shipping $120+"
+msgstr "Stock canadien – aucun tarif surprise – Livraison gratuite dès 120 $"
+
+#: templates/partials/nav.html:30
+#, fuzzy
+#| msgid "Create an Account"
+msgid "User Account"
+msgstr "Créer un compte"
+
+#: templates/partials/nav.html:36
+msgid "Log In"
+msgstr "Connexion"
+
+#: templates/partials/nav.html:39
+#, fuzzy
+#| msgid "Your Cart"
+msgid "Cart"
+msgstr "Votre panier"
+
+#: templates/partials/nav.html:43
+#, fuzzy
+#| msgid "Your Wishlist"
+msgid "Wishlist"
+msgstr "Votre liste de souhaits"
+
+#: templates/partials/nav.html:76
+msgid "Brands"
+msgstr "Marques"
+
+#: templates/partials/nav.html:77
+msgid "Blogs"
+msgstr "Blogs"

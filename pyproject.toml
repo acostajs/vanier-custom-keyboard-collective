@@ -1,0 +1,17 @@
+[project]
+name = "template"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "django>=5.2.6",
+    "pillow>=11.3.0",
+    "ruff>=0.13.0",
+    "stripe>=13.2.0",
+    "python-dotenv>=1.2.1",
+]
+
+[tool.pyright]
+venvPath = "."
+venv = ".venv"

@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% load currency %}
+{% load i18n %}
+{% block content %}
+<section class="section section-checkout-page">
+	<div class="container checkout-container">
+		<h2>{% translate "Checkout" %}</h2>
+
+		{% if messages %}
+		{% for message in messages %}
+		<div class="alert alert-{{ message.tags }}">{{ message }}</div>
+		{% endfor %}
+		{% endif %}
+
+		{% if cart_items %}
+		<div class="checkout-wrapper">
+
+			<div class="checkout-summary">
+				<h3>{% translate "Order Summary" %}</h3>
+
+				<table class="table cart-table checkout-table">
+					<thead>
+					<tr>
+						<th>{% translate "Product" %}</th>
+						<th>{% translate "Unit" %}</th>
+						<th>{% translate "Qty" %}</th>
+						<th>{% translate "Line" %}</th>
+						<th>{% translate "Actions" %}</th>
+					</tr>
+					</thead>
+
+					<tbody>
+					{% for item in cart_items %}
+					<tr>
+						<td>
+							<a href="{% url 'inventory:product' item.product.id %}" class="cart-product-link">
+								<img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" />
+								{{ item.product.name }}
+							</a>
+						</td>
+
+						<td>{{ item.unit_cents|cents_to_dollars }}</td>
+
+						<td>
+							<form method="post"
+								  action="{% url 'cart:update_cart_checkout' item.product.id %}"
+								  class="qty-update-form">
+								{% csrf_token %}
+								<input
+										type="number"
+										name="quantity"
+										value="{{ item.quantity }}"
+										min="1"
+										max="{{ item.product.quantity }}"
+										class="qty-input"
+								/>
+								<button type="submit" class="btn btn--secondary btn--sm">
+									{% translate "Update" %}
+								</button>
+							</form>
+						</td>
+
+						<td>{{ item.line_cents|cents_to_dollars }}</td>
+
+						<td>
+							<form method="post"
+								  action="{% url 'cart:remove_from_cart_checkout' item.product.id %}"
+								  class="remove-form">
+								{% csrf_token %}
+								<button type="submit" class="btn btn--warning btn--sm">
+									{% translate "Remove" %}
+								</button>
+							</form>
+						</td>
+					</tr>
+					{% endfor %}
+					</tbody>
+
+					<tfoot>
+					<tr>
+						<td colspan="4"><strong>{% translate "Total" %}</strong></td>
+						<td><strong>{{ subtotal_cents|cents_to_dollars }}</strong></td>
+					</tr>
+					</tfoot>
+				</table>
+			</div>
+
+			<div class="checkout-actions">
+				<a href="{% url 'cart:cart_detail' %}" class="btn btn--secondary">
+					{% translate "Back to Cart" %}
+				</a>
+
+				<form method="post" action="{% url 'cart:create_checkout_session' %}">
+					{% csrf_token %}
+					<button type="submit" class="btn btn--cta">
+						{% translate "Proceed to Payment" %}
+					</button>
+				</form>
+			</div>
+		</div>
+
+		{% else %}
+		<div class="empty-cart-message">
+			<p>{% translate "Your cart is empty." %}</p>
+
+			<a href="{% url 'inventory:index' %}" class="btn btn--primary">
+				{% translate "Continue Shopping" %}
+			</a>
+		</div>
+		{% endif %}
+	</div>
+</section>
+{% endblock %}

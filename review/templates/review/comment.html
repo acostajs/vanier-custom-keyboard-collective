@@ -1,0 +1,38 @@
+{% extends 'base.html' %} {% load i18n %} {% block content %}
+<section class="section section--light">
+	<div class="container">
+		<div class="form-layout">
+			<article class="review-preview">
+				<h2>{% translate "Review by" %} {{ review.email }}</h2>
+				<p>{{ review.message }}</p>
+			</article>
+
+			<div class="form-card">
+				<h2>{% translate "Write a Comment" %}</h2>
+
+				{% if form.non_field_errors %}
+				<div class="alert alert--danger">{{ form.non_field_errors }}</div>
+				{% endif %}
+
+				<form
+					method="post"
+					action="{% url 'review:comment_submit' review.id %}"
+					novalidate
+				>
+					{% csrf_token %} {% for field in form %}
+					<div class="form-field">
+						<label for="{{ field.id_for_label }}">{{ field.label }}</label>
+						{{ field }} {% if field.errors %}
+						<span class="field-error">{{ field.errors }}</span>
+						{% endif %}
+					</div>
+					{% endfor %}
+					<button type="submit" class="btn btn--primary">
+						{% translate "Post Comment" %}
+					</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock %}

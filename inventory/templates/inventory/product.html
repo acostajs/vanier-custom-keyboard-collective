@@ -1,0 +1,170 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}
+<section class="section">
+	<div class="container">
+
+		{% if messages %}
+		{% for message in messages %}
+		<div class="alert alert-{{ message.tags }}">{{ message }}</div>
+		{% endfor %}
+		{% endif %}
+
+		<div class="product-detail">
+			<div class="product-detail__image">
+				<img src="{{ product.image.url }}" alt="{{ product.name }}" />
+			</div>
+
+			<div class="product-detail__info">
+
+				{% if product.new_arrival %}
+				<span class="badge">{% translate "New Arrival" %}</span>
+				{% endif %}
+
+				<h2>{{ product.name }}</h2>
+
+				{% if rating_average %}
+				<div class="rating">★ {{ rating_average|floatformat:1 }}</div>
+				{% endif %}
+
+				<p>{{ product.description }}</p>
+
+				<form
+						action="{% url 'cart:add_to_cart' product.id %}"
+						method="POST"
+						class="add-to-cart-form"
+				>
+					{% csrf_token %}
+
+					<label for="quantity"><strong>{% translate "Quantity:" %}</strong></label>
+
+					<div class="form-cart-controllers">
+						<input
+								type="number"
+								id="quantity"
+								name="quantity"
+								value="1"
+								min="1"
+								max="{{ product.quantity }}"
+								class="quantity-input"
+						/>
+						<button type="submit" class="btn btn--cta">
+							{% translate "Add to Cart" %}
+						</button>
+					</div>
+				</form>
+
+				{% if user.is_authenticated %}
+				<form
+						action="{% url 'account:add_to_wishlist' product.id %}"
+						method="POST"
+						class="add-to-wishlist-form"
+				>
+					{% csrf_token %}
+					<button type="submit" class="btn btn--cta">
+						{% translate "Add to Wishlist" %}
+					</button>
+				</form>
+				{% endif %}
+
+				<a href="{% url 'review:review' product.id %}" class="btn btn--secondary">
+					{% translate "Write a Review" %}
+				</a>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="section section--light">
+	<div class="container">
+		<h2>{% translate "Related Products" %}</h2>
+
+		<p class="text-muted">
+			{% translate "Category" %}: {{ product.category.name }}
+		</p>
+
+		<div class="related-products">
+			{% for related_product in products %}
+			<a
+					href="{% url 'inventory:product' related_product.id %}"
+					class="related-product"
+			>
+				<div class="related-product__name">{{ related_product.name }}</div>
+				<div class="related-product__price">
+					{{ related_product.discounted_price_in_dollars }}
+				</div>
+			</a>
+			{% empty %}
+			<p>{% translate "No related products found." %}</p>
+			{% endfor %}
+		</div>
+	</div>
+</section>
+
+<section class="section">
+	<div class="container">
+		<h2>{% translate "Product Reviews" %}</h2>
+
+		{% for review in reviews %}
+		{% if review.flags > 4 %}
+		<p class="text-danger">
+			{% translate "This review has been flagged multiple times." %}
+		</p>
+		{% else %}
+		<article class="review-card">
+			<header class="review-card__header">
+				<span class="review-card__author">{{ review.email }}</span>
+				<time class="review-card__date">
+					{{ review.created_date|date:"M d, Y" }}
+				</time>
+			</header>
+
+			<div class="review-card__actions">
+				<span>{% translate "Flags:" %} {{ review.flags.count }}</span>
+				<a href="{% url 'review:flag' review.id %}" class="btn btn--warning btn--sm">
+					{% translate "Flag Review" %}
+				</a>
+			</div>
+
+			<p class="review-card__message">{{ review.message }}</p>
+
+			<div class="review-card__rating">
+				★ {{ review.rating }} / 5
+			</div>
+
+			<div class="review-card__helpful">
+				<a href="{% url 'review:vote' review.id %}" class="btn btn--success btn--sm">
+					{% translate "Mark as Helpful" %}
+				</a>
+				<span>
+                            {{ review.votes.count }} {% translate "people found this helpful" %}
+                        </span>
+			</div>
+
+			<a href="{% url 'review:comment' review.id %}" class="btn btn--sm">
+				{% translate "Write a comment" %}
+			</a>
+
+			<div class="comments">
+				{% for comment in review.comments.all %}
+				<div class="comment">
+					<div class="comment__header">
+						<span class="comment__author">{{ comment.email }}</span>
+						<time class="comment__date">
+							{{ comment.created_date|date:"M d, Y" }}
+						</time>
+					</div>
+					<p class="comment__message">{{ comment.message }}</p>
+				</div>
+				{% empty %}
+				<p class="text-muted">{% translate "No comments yet." %}</p>
+				{% endfor %}
+			</div>
+		</article>
+		{% endif %}
+		{% empty %}
+		<p>{% translate "No reviews yet." %}</p>
+		{% endfor %}
+	</div>
+</section>
+{% endblock %}
