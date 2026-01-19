@@ -1,0 +1,43 @@
+.section-checkout-page {
+	background-color: #f9f9f9;
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+}
+
+.checkout-container {
+	border: 1px solid #ddd;
+	border-radius: 6px;
+	padding: 1rem 2rem;
+	background: white;
+	box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+}
+
+.checkout-table thead tr th {
+	background-color: #0074d4;
+	color: white;
+}
+
+.checkout-actions {
+	margin-top: 1.5rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.checkout-actions .btn--secondary {
+	background-color: #ccc;
+	color: #444;
+}
+
+.checkout-actions .btn--secondary:hover {
+	background-color: #bbb;
+}
+
+.checkout-actions .btn--cta {
+	background-color: #0074d4;
+	color: white;
+}
+
+.checkout-actions .btn--cta:hover {
+	background-color: #005fa3;
+}

@@ -1,0 +1,142 @@
+.product-detail {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 3rem;
+	align-items: start;
+}
+
+.product-detail__image img {
+	width: 100%;
+	border-radius: 8px;
+}
+
+.product-detail__info h2 {
+	margin: 0 0 1rem 0;
+}
+
+.product-detail__price {
+	font-size: 1.5rem;
+	font-weight: 700;
+	margin: 1.5rem 0;
+}
+
+.rating {
+	color: var(--warning-color);
+	font-size: 1.125rem;
+	margin-bottom: 1rem;
+}
+
+/* Related Products */
+.related-products {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	gap: 1rem;
+	margin-top: 1rem;
+}
+
+.related-product {
+	background: white;
+	padding: 1rem;
+	border-radius: 8px;
+	text-decoration: none;
+	color: inherit;
+	box-shadow: var(--card-shadow);
+	transition: transform 0.2s;
+}
+
+.related-product:hover {
+	transform: translateY(-2px);
+}
+
+.related-product__name {
+	margin-bottom: 0.5rem;
+}
+
+.related-product__price {
+	font-weight: 700;
+}
+
+/* Review Cards */
+.review-card {
+	background: white;
+	padding: 1.5rem;
+	border-radius: 8px;
+	box-shadow: var(--card-shadow);
+	margin-bottom: 1.5rem;
+}
+
+.review-card__header {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 1rem;
+}
+
+.review-card__author {
+	font-weight: 600;
+}
+
+.review-card__date {
+	color: #999;
+	font-size: 0.875rem;
+}
+
+.review-card__actions {
+	display: flex;
+	gap: 1rem;
+	align-items: center;
+	margin-bottom: 1rem;
+}
+
+.review-card__message {
+	font-size: 1.125rem;
+	margin: 1rem 0;
+}
+
+.review-card__rating {
+	color: var(--warning-color);
+	font-size: 1.125rem;
+	font-weight: 600;
+	margin: 1rem 0;
+}
+
+.review-card__helpful {
+	display: flex;
+	gap: 1rem;
+	align-items: center;
+	margin: 1rem 0;
+}
+
+/* Comments */
+.comments {
+	margin-top: 1.5rem;
+	padding-top: 1.5rem;
+	border-top: 1px solid #eee;
+}
+
+.comment {
+	background: var(--light-bg);
+	padding: 1rem;
+	border-radius: 4px;
+	margin-bottom: 0.75rem;
+}
+
+.comment__header {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 0.5rem;
+}
+
+.comment__author {
+	font-weight: 600;
+	font-size: 0.875rem;
+}
+
+.comment__date {
+	color: #999;
+	font-size: 0.75rem;
+}
+
+.comment__message {
+	margin: 0;
+	font-size: 0.9375rem;
+}

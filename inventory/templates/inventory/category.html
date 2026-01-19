@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}
+<section class="section section--light">
+	<div class="container">
+		<h1>{{ category.name }}</h1>
+		<p class="lead">{{ category.description }}</p>
+	</div>
+</section>
+
+<section class="section">
+	<div class="container">
+		<h2>{% translate "Products" %}</h2>
+
+		<div class="product-layout">
+			<aside class="sidebar">
+				<div class="filter-card">
+					<form method="get">
+						<div class="form-group">
+							<label for="{{ filter_sort_form.sort.id_for_label }}" class="form-label">
+								{% translate "Sort by:" %}
+							</label>
+							{{ filter_sort_form.sort }}
+						</div>
+
+						<fieldset class="form-group">
+							<legend class="form-label">{% translate "Filters:" %}</legend>
+
+							{% for checkbox in filter_sort_form.filter_criteria %}
+							<div class="form-check">
+								{{ checkbox.tag }}
+								<label for="{{ checkbox.id_for_label }}">
+									{{ checkbox.choice_label }}
+								</label>
+							</div>
+							{% endfor %}
+						</fieldset>
+
+						<button type="submit" class="btn">{% translate "Apply" %}</button>
+					</form>
+				</div>
+			</aside>
+
+			<main class="main-content">
+				<div class="product-grid">
+					{% for product in products %}
+					<a href="{% url 'inventory:product' product.id %}" class="product-card">
+
+						<img src="{{ product.image.url }}" class="product-card__img" alt="{{ product.name }}" />
+
+						<div class="product-card__body">
+
+							{% if product.new_arrival %}
+							<span class="badge">{% translate "New Arrival" %}</span>
+							{% endif %}
+
+							<h5 class="product-card__title">{{ product.name }}</h5>
+
+							{% if product.is_available %}
+							<p>{% translate "Available units:" %} {{ product.quantity }}</p>
+							{% else %}
+							<p class="text-danger">{% translate "Product not available" %}</p>
+							{% endif %}
+
+							{% if product.discount_percentage > 0 %}
+							<p class="price--old">{{ product.price_in_dollars }}</p>
+							<p>{% translate "Discount" %}: {{ product.discount_percentage }}%</p>
+							<p class="price">{{ product.discounted_price_in_dollars }}</p>
+							{% else %}
+							<p class="price">{{ product.price_in_dollars }}</p>
+							{% endif %}
+						</div>
+
+					</a>
+					{% empty %}
+					<p>{% translate "No products available." %}</p>
+					{% endfor %}
+				</div>
+			</main>
+
+		</div>
+	</div>
+</section>
+{% endblock %}

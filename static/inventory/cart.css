@@ -1,0 +1,94 @@
+.section-cart-page {
+	padding: 40px 0;
+	background-color: #f9f9f9;
+}
+
+.section-cart-page .container {
+	border: 1px solid #ddd;
+	border-radius: 6px;
+	padding: 1rem 2rem;
+	background: white;
+	box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+}
+
+.section-cart-page .cart-table {
+	width: 100%;
+	border-collapse: collapse;
+
+	th,
+	td {
+		vertical-align: middle;
+		padding: 10px;
+		border-bottom: 1px solid #e5e5e5;
+	}
+}
+
+.section-cart-page .cart-product-link {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	text-decoration: none;
+	color: black;
+
+	img {
+		max-width: 60px;
+		border-radius: 4px;
+		margin-bottom: 6px;
+		object-fit: cover;
+	}
+}
+
+.section-cart-page .cart-footer-buttons {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 20px;
+
+	.btn {
+		min-width: 120px;
+	}
+}
+
+/* Base button styling */
+.section-cart-page .btn {
+	display: inline-block;
+	padding: 8px 14px;
+	border-radius: 6px;
+	border: none;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: 500;
+	transition: background-color 0.2s ease;
+
+	&.btn--cta {
+		background-color: #0074d4;
+		color: #fff;
+
+		&:hover {
+			background-color: #005fa3;
+		}
+	}
+
+	&.btn--secondary {
+		background-color: #ccc;
+		color: #444;
+
+		&:hover {
+			background-color: #bbb;
+		}
+	}
+
+	&.btn--warning {
+		background-color: #ba2121;
+		color: #fff;
+
+		&:hover {
+			background-color: #a41515;
+		}
+	}
+
+	&.btn--sm {
+		padding: 4px 8px;
+		font-size: 12px;
+	}
+}

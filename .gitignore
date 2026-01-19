@@ -1,0 +1,27 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Env
+.env
+
+# Database
+db.sqlite3
+
+# Ignore mediafiles folder files but keep folder for structure
+/mediafiles/
+
+# PyCharm/IntelliJ IDEA
+.idea/
+*.iws
+out/
+
+# macOS
+.DS_Store

@@ -1,0 +1,343 @@
+@import "index.css";
+@import "cart.css";
+@import "product.css";
+@import "results.css";
+@import "checkout.css";
+
+/* ============================================
+   CSS VARIABLES
+   ============================================ */
+:root {
+	--primary-color: #2c3e50;
+	--secondary-color: #3498db;
+	--light-bg: #f8f9fa;
+	--card-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	--danger-color: #e74c3c;
+	--warning-color: #f39c12;
+	--success-color: #27ae60;
+	--text-muted: #6c757d;
+	--border-color: #ddd;
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+body {
+	font-family: system-ui, -apple-system, sans-serif;
+}
+
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 1rem;
+}
+
+.section {
+	padding: 3rem 0;
+}
+
+.section--light {
+	background: var(--light-bg);
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+.lead {
+	font-size: 1.125rem;
+	color: var(--text-muted);
+	margin-top: 0.5rem;
+}
+
+.text-danger {
+	color: var(--danger-color);
+}
+
+.text-muted {
+	color: var(--text-muted);
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+.btn {
+	display: inline-block;
+	padding: 0.75rem 1.5rem;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	text-decoration: none;
+	text-align: center;
+	font-weight: 500;
+	margin-right: 0.5rem;
+	margin-bottom: 0.5rem;
+	background: var(--secondary-color);
+	color: white;
+}
+
+.btn:hover {
+	opacity: 0.9;
+}
+
+.btn--primary {
+	background: var(--secondary-color);
+	color: white;
+}
+
+.btn--secondary {
+	background: white;
+	border: 1px solid var(--border-color);
+	color: #333;
+}
+
+.btn--warning {
+	background: var(--warning-color);
+	color: white;
+}
+
+.btn--success {
+	background: var(--success-color);
+	color: white;
+}
+
+.btn--sm {
+	padding: 0.5rem 1rem;
+	font-size: 0.875rem;
+}
+
+/* ============================================
+   BADGES
+   ============================================ */
+.badge {
+	display: inline-block;
+	padding: 0.25rem 0.5rem;
+	background: var(--danger-color);
+	color: white;
+	border-radius: 4px;
+	font-size: 0.75rem;
+	font-weight: 600;
+	margin-bottom: 0.5rem;
+}
+
+/* ============================================
+   ALERTS
+   ============================================ */
+.alert {
+	padding: 1rem;
+	border-radius: 4px;
+	margin-bottom: 1.5rem;
+}
+
+.alert--danger {
+	background: #fee;
+	color: #c33;
+	border: 1px solid #fcc;
+}
+
+/* ============================================
+   CARDS
+   ============================================ */
+.filter-card,
+.form-card,
+.review-preview {
+	background: white;
+	border-radius: 8px;
+	padding: 1.5rem;
+	box-shadow: var(--card-shadow);
+}
+
+.form-card {
+	padding: 2rem;
+}
+
+.form-card h2,
+.review-preview h2 {
+	margin-bottom: 1.5rem;
+}
+
+.review-preview h2 {
+	font-size: 1.25rem;
+	margin-bottom: 1rem;
+}
+
+.review-preview {
+	margin-bottom: 1.5rem;
+}
+
+.review-preview p {
+	color: #555;
+	line-height: 1.6;
+}
+
+/* ============================================
+   FORMS
+   ============================================ */
+.form-layout {
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+.form-group,
+.form-field {
+	margin-bottom: 1.5rem;
+}
+
+.form-label,
+.form-field label {
+	display: block;
+	font-weight: 600;
+	margin-bottom: 0.5rem;
+}
+
+.form-select,
+.form-field input,
+.form-field textarea,
+.form-field select {
+	width: 100%;
+	padding: 0.75rem;
+	border: 1px solid var(--border-color);
+	border-radius: 4px;
+	font-size: 1rem;
+}
+
+.form-select {
+	padding: 0.5rem;
+}
+
+.form-field input:focus,
+.form-field textarea:focus,
+.form-field select:focus {
+	outline: none;
+	border-color: var(--secondary-color);
+	box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.form-check {
+	margin-bottom: 0.75rem;
+}
+
+.form-check input {
+	margin-right: 0.5rem;
+}
+
+.field-error {
+	display: block;
+	color: var(--danger-color);
+	font-size: 0.875rem;
+	margin-top: 0.5rem;
+}
+
+/* ============================================
+   RESPONSIVE - MOBILE
+   ============================================ */
+@media (max-width: 768px) {
+	/* Navigation */
+	.top-nav .container {
+		flex-wrap: wrap;
+	}
+
+	.brand {
+		flex: 1 0 100%;
+		margin-bottom: 1rem;
+		text-align: center;
+	}
+
+	.nav-actions {
+		flex-direction: column;
+		width: 100%;
+		gap: 1rem;
+	}
+
+	.search-form {
+		width: 100%;
+	}
+
+	.search-form input {
+		flex: 1;
+		min-width: 0;
+	}
+
+	.user-links {
+		justify-content: center;
+		width: 100%;
+	}
+
+	.category-list {
+		flex-direction: column;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	/* Layouts */
+	.product-layout {
+		flex-direction: column;
+	}
+
+	.sidebar {
+		flex: 1;
+	}
+
+	.product-detail {
+		grid-template-columns: 1fr;
+	}
+
+	.category-grid {
+		grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+	}
+
+	/* Footer */
+	.footer-content {
+		flex-direction: column;
+		text-align: center;
+	}
+
+	.footer-links {
+		flex-direction: column;
+		gap: 0.75rem;
+	}
+}
+
+.add-to-cart-form {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	margin-bottom: 1rem;
+}
+
+.quantity-input {
+	width: 80px;
+	padding: 0.25rem;
+	text-align: center;
+	height: 50px;
+	border-radius: 6px;
+	border: 1px solid #ccc;
+	font-weight: 500;
+}
+
+.form-cart-controllers {
+	display: flex;
+	gap: 16px;
+}
+
+/* --- CTA BUTTON STYLE --- */
+:root {
+	--primary-cta: #00a60e;
+	--primary-fg: white;
+}
+
+.btn--cta,
+.button.btn--cta,
+input[type="submit"].btn--cta,
+a.button.btn--cta {
+	background-color: var(--primary-cta);
+	color: var(--primary-fg);
+	font-weight: 600;
+}
+
+.btn--cta:hover,
+.button.btn--cta:hover,
+input[type="submit"].btn--cta:hover,
+a.button.btn--cta:hover {
+	background-color: #00950d;
+	color: #fff;
+}

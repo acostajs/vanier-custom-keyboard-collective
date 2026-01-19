@@ -1,0 +1,15 @@
+.section-wishlist-page {
+	padding: 2rem 0;
+
+	& h2 {
+		font-size: 2rem;
+		margin-bottom: 1.5rem;
+		color: #333;
+	}
+
+	& .wishlist-footer-buttons {
+		margin-top: 1.5rem;
+		display: flex;
+		justify-content: flex-end;
+	}
+}

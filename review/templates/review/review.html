@@ -1,0 +1,38 @@
+{% extends 'base.html' %} {% load i18n %} {% block content %}
+
+<section class="section section--light">
+	<div class="container">
+		<div class="form-layout">
+			<div class="form-card">
+				<h2>{% translate "Write a Review" %}</h2>
+
+				{% if form.non_field_errors %}
+				<div class="alert alert--danger">{{ form.non_field_errors }}</div>
+				{% endif %} {% if user_has_purchased %}
+				<form
+					method="post"
+					action="{% url 'review:review_submit' product.id %}"
+					novalidate
+				>
+					{% csrf_token %} {% for field in form %}
+					<div class="form-field">
+						<label for="{{ field.id_for_label }}">{{ field.label }}</label>
+						{{ field }} {% if field.errors %}
+						<span class="field-error">{{ field.errors }}</span>
+						{% endif %}
+					</div>
+					{% endfor %}
+					<button type="submit" class="btn btn--primary">
+						{% translate "Submit Review" %}
+					</button>
+				</form>
+				{% else %}
+				<p class="text-danger">
+					{% translate "You must purchase this product to leave a review." %}"
+				</p>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock %}

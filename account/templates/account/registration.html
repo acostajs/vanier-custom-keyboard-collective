@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load currency %}
+{% load i18n %}
+{% block content %}
+
+<section class="registration-section">
+	<div class="container registration-wrapper">
+		<div class="registration-card">
+			<h3 class="text-center mb-4">{% translate "Create an Account" %}</h3>
+
+			<form method="post" action="{% url 'account:registration' %}">
+				{% csrf_token %}
+
+				{% for field in form %}
+				<div class="form-group mb-3">
+					{{ field.label_tag }}
+					{{ field }}
+					{% if field.errors %}
+					<div class="text-danger small">{{ field.errors }}</div>
+					{% endif %}
+				</div>
+				{% endfor %}
+
+				<button class="btn btn-success w-100 registration-btn">
+					{% translate "Register" %}
+				</button>
+			</form>
+
+			<div class="text-center mt-3">
+				<a href="{% url 'account:login' %}" class="login-link">
+					{% translate "Already have an account? Log in" %}
+				</a>
+				<br />
+				<a href="{% url 'account:reset_password' %}" class="register-link">
+					{% translate "Forgot password?" %}
+				</a>
+			</div>
+		</div>
+	</div>
+</section>
+
+{% endblock %}

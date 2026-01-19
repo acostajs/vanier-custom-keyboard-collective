@@ -1,0 +1,14 @@
+/** Global **/
+@import "./global/nav.css";
+@import "./global/footer.css";
+
+/** Account **/
+@import "./account/style.css";
+
+/** Inventory **/
+@import "inventory/index.css";
+@import "inventory/style.css";
+@import "inventory/cart.css";
+@import "inventory/checkout.css";
+@import "inventory/product.css";
+@import "inventory/results.css";

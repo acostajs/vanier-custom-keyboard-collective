@@ -1,0 +1,81 @@
+{% load static %}
+{% load i18n %}
+
+<header class="site-header">
+	<div class="announcement-bar">
+		<div class="container">
+			{% translate "Canadian-based stock – no surprise tariffs – Free shipping $120+" %}
+		</div>
+	</div>
+
+	<nav class="top-nav">
+		<div class="container">
+			<a class="brand" href="{% url 'inventory:index' %}">
+				{% translate "Custom Keyboard Collective" %}
+			</a>
+
+			<div class="nav-actions">
+				<form
+					class="search-form"
+					method="get"
+					action="{% url 'inventory:results' %}"
+				>
+					{{ search_form.search }}
+					<button type="submit" class="btn btn--primary btn--sm">{% translate "Search" %}</button>
+				</form>
+
+				<div class="user-links">
+					{% if user.is_authenticated %}
+					<a href="{% url 'account:account' %}" class="nav-link"
+						>{% translate "User Account" %}</a
+					>
+					{% else %}
+					<a href="{% url 'account:registration' %}" class="nav-link"
+						>{% translate "Register" %}</a
+					>
+					<a href="{% url 'account:login' %}" class="nav-link">{% translate "Log In" %}</a>
+					{% endif %}
+					<a href="{% url 'cart:cart_detail' %}" class="nav-link"
+						>{% translate "Cart" %} ({{ cart_count }})</a
+					>
+					{% if user.is_authenticated %}
+					<a href="{% url 'account:wishlist_detail' %}" class="nav-link"
+						> {% translate "Wishlist" %} ( {{ wishlist_count }} )</a
+					>
+					{% endif %}
+
+					<form action="{% url 'set_language' %}" method="post" class="lang-form">
+						{% csrf_token %}
+						<select name="language" onchange="this.form.submit()">
+							{% get_current_language as LANGUAGE_CODE %}
+							{% get_available_languages as LANGUAGES %}
+							{% get_language_info_list for LANGUAGES as languages %}
+							{% for language in languages %}
+							<option value="{{ language.code }}"
+									{% if language.code == LANGUAGE_CODE %}selected{% endif %}>
+								{{ language.name_local }}
+							</option>
+							{% endfor %}
+						</select>
+					</form>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	<nav class="category-nav">
+		<div class="container">
+			<ul class="category-list">
+				{% for category in categories %}
+				<li>
+					<a href="{% url 'inventory:category' category.id %}"
+						>{{ category.name }}</a
+					>
+				</li>
+				{% endfor %}
+				<li><a href="#"> {% translate "Brands" %}</a></li>
+				<li><a href="#"> {% translate "Blogs" %}</a></li>
+			</ul>
+		</div>
+	</nav>
+</header>
