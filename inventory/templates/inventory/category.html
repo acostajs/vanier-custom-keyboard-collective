@@ -23,9 +23,8 @@
 							{{ filter_sort_form.sort }}
 						</div>
 
-						<fieldset class="form-group">
+						<fieldset >
 							<legend class="form-label">{% translate "Filters:" %}</legend>
-
 							{% for checkbox in filter_sort_form.filter_criteria %}
 							<div class="form-check">
 								{{ checkbox.tag }}
