@@ -1,0 +1,83 @@
+{
+	"meta": {
+		"title": "Custom Keyboard Collective – Django Backend E-Commerce",
+		"role": "Backend Developer",
+		"type": "Academic team project (Web Framework 2, Vanier College)",
+		"audience": ["Recruiters", "Instructors", "Developers"],
+		"status": "On hold"
+	},
+
+	"overview": {
+		"summary": "A Django-based backend project for a community-focused e-commerce platform centered around custom mechanical keyboards and components. This project was developed as a team for the Web Framework 2 course, using Django’s templating system and plain Django views.",
+		"problem": "Existing keyboard communities often separate product sales from user discussions, reviews, and community feedback, leading to fragmented user experiences.",
+		"solution": "A centralized Django application that combines product listings, user accounts, reviews, and comments, enabling both commerce and community interaction within a single platform."
+	},
+
+	"responsibilities": [
+		"Worked primarily on the backend as part of a team-based academic project",
+		"Designed and implemented core backend architecture using Django and its templating system",
+		"Built Django models for products, categories, users, reviews, and comments",
+		"Implemented authentication and authorization using Django’s built-in auth system",
+		"Integrated Stripe for payment processing and implemented all Stripe webhooks",
+		"Handled local media storage for product images during development",
+		"Developed server-rendered views using plain Django views and templates"
+	],
+
+	"tech_stack": [
+		"Python",
+		"Django",
+		"Django Templates",
+		"Stripe",
+		"SQLite (dev)",
+		"GitHub",
+		"uv"
+	],
+
+	"architecture": {
+		"approach": "Monolithic Django application using server-rendered templates and plain Django views, developed collaboratively with a strong emphasis on clarity, maintainability, and academic best practices.",
+		"data_flow": "Product, user, review, and comment data are stored in a relational database; images are served locally during development; Stripe handles external payment processing while order data and webhook events are managed internally.",
+		"deployment": "Currently not deployed. Deployment and production configuration are planned as future work."
+	},
+
+	"key_features": [
+		"Product and category management for keyboards and components",
+		"User authentication using Django’s built-in auth system",
+		"Community-driven reviews and comment system",
+		"Stripe integration with webhook handling",
+		"Server-rendered pages using Django templates"
+	],
+
+	"challenges_and_learnings": [
+		"Collaborating on a shared codebase in a team environment",
+		"Designing a backend that balances e-commerce functionality with community features",
+		"Structuring Django models to support reviews and user interactions cleanly",
+		"Implementing and testing Stripe payments and webhooks",
+		"Managing local media storage during development",
+		"Planning for future scalability while working within academic constraints"
+	],
+
+	"skills_demonstrated": [
+		"Django backend development",
+		"Team-based software development",
+		"Relational data modeling",
+		"Authentication and authorization",
+		"Stripe payment and webhook integration",
+		"Community feature design (reviews and comments)",
+		"Academic project planning and execution"
+	],
+
+	"future_improvements": [
+		"Deploy the application to a production environment",
+		"Migrate media storage to a cloud-based solution",
+		"Enhance moderation tools for reviews and comments",
+		"Improve performance and pagination for large product catalogs",
+		"Expand community features such as ratings aggregation and user profiles",
+		"Optimize for mobile",
+		"Making an appealing design"
+	],
+
+	"links": {
+		"live_demo": "",
+		"source_code": "https://github.com/acostajs/vanier-custom-keyboard-collective"
+	}
+}

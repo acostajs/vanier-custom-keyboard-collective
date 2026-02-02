@@ -88,7 +88,6 @@ def login_submit(request):
     return render(request, "account/login.html", {"form": form})
 
 
-@require_POST
 def registration(request):
     """Handle new user registration with cart/wishlist setup."""
 

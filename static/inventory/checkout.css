@@ -41,3 +41,8 @@
 .checkout-actions .btn--cta:hover {
 	background-color: #005fa3;
 }
+
+.cart-product-link img {
+	max-width: 200px;
+
+}
