@@ -2,11 +2,6 @@ import pytest
 from django.urls import reverse
 from unittest.mock import patch
 
-@pytest.fixture
-def test_client():
-    """Fixture providing a Django test client, referred to as TestClient."""
-    from django.test import Client as TestClient
-    return TestClient()
 
 @pytest.mark.django_db
 def test_catalog_search_and_filter(test_client, seed_data):
@@ -131,4 +126,7 @@ def test_checkout_and_session_creation(mock_stripe_create, test_client, seed_dat
     assert called_kwargs["mode"] == "payment"
     assert len(called_kwargs["line_items"]) == 1
     assert called_kwargs["line_items"][0]["quantity"] == 1
-    assert called_kwargs["line_items"][0]["price_data"]["unit_amount"] == p1.get_discounted_price()
+    assert (
+        called_kwargs["line_items"][0]["price_data"]["unit_amount"]
+        == p1.get_discounted_price()
+    )
