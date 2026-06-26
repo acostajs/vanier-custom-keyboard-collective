@@ -13,7 +13,7 @@ def test_homepage_health(page: Page, live_server) -> None:
     assert response.ok
     assert response.status == 200
     assert "/en/" in page.url
-    
+
     # Check that "Available Products" is present on the page
     assert page.locator("h2:has-text('Available Products')").is_visible()
 
@@ -29,7 +29,7 @@ def test_category_page_health(page: Page, live_server, seed_data) -> None:
     assert response is not None
     assert response.ok
     assert response.status == 200
-    
+
     # Verify the category heading is visible
     assert page.locator(f"h1:has-text('{category.name}')").is_visible()
 
@@ -45,7 +45,7 @@ def test_product_page_health(page: Page, live_server, seed_data) -> None:
     assert response is not None
     assert response.ok
     assert response.status == 200
-    
+
     # Verify the product heading is visible
     assert page.locator(f"h2:has-text('{product.name}')").is_visible()
 
@@ -60,7 +60,7 @@ def test_login_page_health(page: Page, live_server) -> None:
     assert response is not None
     assert response.ok
     assert response.status == 200
-    
+
     # Check for Login heading and form input fields
     assert page.locator("h3:has-text('Login')").is_visible()
     assert page.locator("input[name='username']").is_visible()
@@ -77,7 +77,7 @@ def test_registration_page_health(page: Page, live_server) -> None:
     assert response is not None
     assert response.ok
     assert response.status == 200
-    
+
     # Check for Registration heading and form input fields
     assert page.locator("h3:has-text('Create an Account')").is_visible()
     assert page.locator("input[name='username']").is_visible()
@@ -94,6 +94,6 @@ def test_cart_page_health(page: Page, live_server) -> None:
     assert response is not None
     assert response.ok
     assert response.status == 200
-    
+
     # Verify the cart heading is visible
     assert page.locator("h2:has-text('Your Cart')").is_visible()
