@@ -1,180 +1,82 @@
-# Custom Keyboard Collective — Backend
+# Custom Keyboard Collective — QA & Test Automation Showcase
 
-This repository contains the backend for the **Custom Keyboard Collective** online store.
+This repository serves as a professional **QA & Test Automation Showcase**, transforming a Django e-commerce back-end into a resilient, production-grade testing ecosystem. It features an advanced test suite combining isolated unit business logic, multi-version Python compatibility matrices, and automated REST API validation layers.
 
-The project is built with **Django** and follows an API-first approach. Dependency management and environment setup are handled **exclusively with `uv`** (Astral’s Python tooling). No `pip`, `virtualenv`, or `python -m venv` workflows are used.
-
-> This README explains how to set up, run, test, and contribute to the project using **uv only**.
+The entire project lifecycle, dependency locking, and virtual environments are managed exclusively using **`uv`** (Astral’s high-performance Python tooling), ensuring lightning-fast, reproducible test execution.
 
 ---
 
-## Overview
+## 🧪 Test Automation Architecture
 
-The backend provides the core services for the store, including product management, user accounts, and order processing. It is designed to be straightforward to run locally and easy for other developers to understand and extend.
+The core value of this repository lies within its rigorous quality assurance suite. All test executions, fixtures, and execution scripts have been modernized and migrated to a unified architecture.
 
----
+### [👉 View Full Test Suite Documentation & Execution Guide (tests/docs/README.md)](https://www.google.com/search?q=tests/docs/README.md)
 
-## Features
+### Test Suite Blueprint
 
-* RESTful API for products, orders, and users
-* Authentication and authorization
-* Input validation and consistent error handling
-* Django admin dashboard for inventory and data management
-
----
-
-## Prerequisites
-
-* macOS, Linux, or Windows
-* `uv` installed locally (installation steps below)
-* Git (recommended for cloning and version control)
+* **Unit Testing (`tests/unit/`):** High-speed, isolated validations targeting product schemas, mechanical keyboard configuration algorithms, and order pricing calculations.
+* **Integration Testing (`tests/integration/`):** Verifies database state persistence, Django ORM query optimizations, form submissions, and view layer response integrity.
+* **API Testing (`tests/api/`):** Functional endpoint assertions checking REST API payloads, status code behavior (e.g., `200`, `401`, `403`), and token validation.
+* **Smoke Testing (`tests/smoke/`):** Fast sanity checks to ensure the application factory initializes and critical core storefront routes boot cleanly.
+* **CI/CD & Regression Engine:** Automated workflow pipelines running a multi-Python version compatibility matrix ($3.11 \text{ and } 3.12+$) on every commit and pull request to eliminate regressions.
 
 ---
 
-## Quick Start (using **uv** only)
+## 🛠️ Quick Start (Local Setup)
 
-All commands below should be run from the repository root.
+All instructions utilize `uv` to ensure instant environment initialization.
 
-### 1. Clone the repository
+### 1. Synchronize Project Environment
 
-```bash
-git clone https://github.com/582-41B-VA/custom_keyboard_collective.git
-cd custom_keyboard_collective
-```
-
-### 2. Install `uv` (if not already installed)
-
-**macOS (Homebrew):**
-
-```bash
-brew install uv
-```
-
-**Windows (PowerShell):**
-
-```powershell
-powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
-```
-
-Verify the installation:
-
-```bash
-uv --version
-```
-
----
-
-### 3. Create the virtual environment
-
-```bash
-uv venv
-```
-
-This creates and activates a local virtual environment in `.venv`.
-
----
-
-### 4. Install dependencies
+Clone the repository and install all project and test-automation dependencies exactly as defined in the lockfile:
 
 ```bash
 uv sync
+
 ```
 
-This installs all required dependencies exactly as defined in `uv.lock`.
-
----
-
-### 5. Run the development server
+### 2. Apply Migrations & Seed Database
 
 ```bash
-uv run manage.py runserver
+uv run manage.py migrate
+
 ```
 
-The API will now be available locally.
+### 3. Execute the Automated Test Suite
 
----
-
-## Testing and Linting
-
-Run the test suite:
+Run the test suite headlessly across all modules:
 
 ```bash
-uv run manage.py test
+uv run pytest
+
 ```
 
-Run the linter:
+### 4. Run Static Code Analysis & Linters
+
+Enforce code formatting and quality guardrails across the codebase using Ruff:
 
 ```bash
 uv run ruff check .
+
 ```
 
----
-
-## Common Django Management Tasks
+### 5. Launch the Application
 
 ```bash
-# Open a Django shell
-uv run manage.py shell
+uv run manage.py runserver
 
-# Create and apply migrations
-uv run manage.py makemigrations
-uv run manage.py migrate
-
-# Run any custom management command
-uv run manage.py <command>
 ```
 
 ---
 
-## Internationalization (i18n)
+## 🚀 Key QA Features for Recruiters
 
-When adding or updating translations:
-
-```bash
-# Generate message files (example: French)
-uv run django-admin makemessages -l fr
-
-# Compile translations
-uv run django-admin compilemessages
-```
-
-Translations should be edited in the generated `django.po` files.
-
----
-
-## Environment Variables and Secrets
-
-* Store sensitive values (e.g. `SECRET_KEY`, database credentials) in environment variables or a `.env` file used by your deployment setup.
-* Never commit secrets to source control.
-
----
-
-## Contributing
-
-* Follow the existing code style and project structure
-* Include tests for new features and bug fixes
-* Run tests before opening a pull request
-* Write clear, descriptive commit messages
-
----
-
-## Useful `uv` Commands
-
-* `uv add <package>` — add a runtime dependency
-* `uv add --dev <package>` — add a development-only dependency
-* `uv sync` — sync the environment with the lockfile
-* `uv run <command>` — run a command inside the project environment
-* `uvx <tool>` — run a one-off tool without adding it to the project
-
----
-
-## Troubleshooting
-
-* If `uv run` reports an out-of-date lockfile, run `uv sync` and retry.
-* If the development server fails to start due to a port conflict, stop the existing process or run the server on a different port.
+* **No `Any` Type Hinting:** Strict type safety implemented throughout the testing workspace to guarantee contract and payload reliability.
+* **DRY Fixture Inheritance:** Centralized setup using a unified global `conftest.py` architecture at the root of the test directory.
+* **Modern DevOps Integration:** Pre-configured pre-commit validation engines via `Lefthook` paired with `Ruff` and `Biome` configurations to prevent degraded code from reaching source control.
 
 ---
 
 ## License
 
-This project is for educational purposes only.
+This project is licensed under the MIT License - see the LICENSE file for details.
