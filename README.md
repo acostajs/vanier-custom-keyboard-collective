@@ -1,74 +1,164 @@
-# Custom Keyboard Collective — QA & Test Automation Showcase
+# Custom Keyboard Collective | Django QA Automation Showcase
 
-This repository serves as a professional **QA & Test Automation Showcase**, transforming a Django e-commerce back-end into a resilient, production-grade testing ecosystem. It features an advanced test suite combining isolated unit business logic, multi-version Python compatibility matrices, and automated REST API validation layers.
+A Django e-commerce application built to showcase modern **Software QA and Test Automation** practices. [![codecov](https://codecov.io/gh/acostajs/keyboard-collective-qa-showcase/graph/badge.svg)](https://codecov.io/gh/acostajs/keyboard-collective-qa-showcase)
 
-The entire project lifecycle, dependency locking, and virtual environments are managed exclusively using **`uv`** (Astral’s high-performance Python tooling), ensuring lightning-fast, reproducible test execution.
+The project demonstrates how to build and maintain a reliable Python application using automated testing, continuous integration, static analysis, and performance testing. It includes a complete testing strategy covering unit, integration, API, smoke, and end-to-end testing.
 
----
-
-## Test Automation Architecture
-
-The core value of this repository lies within its rigorous quality assurance suite. All test executions, fixtures, and execution scripts have been modernized and migrated to a unified architecture.
-
-### [ --> View Full Test Suite Documentation & Execution Guide (tests/docs/README.md)](https://github.com/acostajs/vanier-custom-keyboard-collective/blob/main/tests/docs/README.md)
-
-### Test Suite Blueprint
-
-* **Unit Testing (`tests/unit/`):** High-speed, isolated validations targeting product schemas, mechanical keyboard configuration algorithms, and order pricing calculations.
-* **Integration Testing (`tests/integration/`):** Verifies database state persistence, Django ORM query optimizations, form submissions, and view layer response integrity.
-* **API Testing (`tests/api/`):** Functional endpoint assertions checking REST API payloads, status code behavior (e.g., `200`, `401`, `403`), and token validation.
-* **Smoke Testing (`tests/smoke/`):** Fast sanity checks to ensure the application factory initializes and critical core storefront routes boot cleanly.
-* **CI/CD & Regression Engine:** Automated workflow pipelines running a multi-Python version compatibility matrix ($3.11 \text{ and } 3.12+$) on every commit and pull request to eliminate regressions.
+The project environment, dependencies, and virtual environments are managed with **Astral uv** for fast and reproducible development.
 
 ---
 
-## Quick Start (Local Setup)
+# What This Project Demonstrates
 
-All instructions utilize `uv` to ensure instant environment initialization.
+This repository highlights my experience with:
 
-### 1. Synchronize Project Environment
+* Building automated test suites with **pytest**
+* Writing **unit, integration, API, smoke, and end-to-end tests**
+* Creating browser automation with **Playwright** and the **Page Object Model (POM)**
+* Running automated tests with **GitHub Actions**
+* Supporting multiple Python versions in CI
+* Measuring application performance with **Locust**
+* Enforcing code quality with **Ruff** and **Git hooks**
 
-Clone the repository and install all project and test-automation dependencies exactly as defined in the lockfile:
+For a full overview of the testing strategy, see:
+
+**➡️ [tests/docs/README.md](tests/docs/README.md)**
+
+---
+
+# Tech Stack
+
+### Application
+
+* Django
+* Python
+
+### Testing
+
+* pytest
+* Playwright
+* Requests
+* Locust
+
+### Code Quality
+
+* Ruff
+* GitHub Actions
+* Lefthook
+
+### Development
+
+* Astral uv
+
+---
+
+# Project Structure
+
+```text
+tests/
+    api/
+    docs/
+    e2e/
+    integration/
+    performance/
+    smoke/
+    unit/
+
+account/
+cart/
+inventory/
+review/
+shop/
+```
+
+The **tests/** folder contains different types of automated tests:
+
+* **Unit tests** for business logic, models, and helper functions
+* **Integration tests** for application workflows
+* **API tests** for endpoints, authentication, and request validation
+* **End-to-end browser tests** using Playwright
+* **Smoke tests** to quickly verify the application starts correctly
+* **Performance tests** using Locust
+
+---
+
+# Getting Started
+
+## Requirements
+
+* Python
+* Astral uv
+
+Install the project dependencies:
 
 ```bash
 uv sync
-
 ```
 
-### 2. Apply Migrations & Seed Database
+Apply the database migrations:
 
 ```bash
 uv run manage.py migrate
-
 ```
 
-### 3. Execute the Automated Test Suite
-
-Run the test suite headlessly across all modules:
-
-```bash
-uv run pytest
-
-```
-
-### 4. Run Static Code Analysis & Linters
-
-Enforce code formatting and quality guardrails across the codebase using Ruff:
-
-```bash
-uv run ruff check .
-
-```
-
-### 5. Launch the Application
+Start the development server:
 
 ```bash
 uv run manage.py runserver
-
 ```
 
 ---
 
-## License
+# Running Tests
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+Run the complete test suite:
+
+```bash
+uv run pytest
+```
+
+Run the Ruff linter:
+
+```bash
+uv run ruff check .
+```
+
+Run only a specific test suite:
+
+```bash
+uv run pytest tests/unit/
+uv run pytest tests/api/
+uv run pytest tests/e2e/
+uv run pytest tests/smoke/
+```
+
+Run the performance tests:
+
+```bash
+uv run task perf
+```
+
+Generate a performance report:
+
+```bash
+uv run task perf-report
+```
+
+---
+
+# Continuous Integration
+
+The project includes automated quality checks that run on every commit and pull request.
+
+These checks include:
+
+* Automated test execution
+* Static code analysis with Ruff
+* Multi-version Python compatibility testing
+* Regression testing
+
+---
+
+# License
+
+This project is licensed under the MIT License.

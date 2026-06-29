@@ -1,179 +1,165 @@
-# Custom Collective - Testing Suite
+# Test Suite Documentation
 
-Welcome to the test suite documentation for Custom Collective. This project uses `pytest` as its primary test runner and runner environment, integrated with Playwright for E2E/smoke testing and `requests` for API integration testing.
+This folder contains the automated test suite for the **Custom Keyboard Collective** project.
 
-## CI & Coverage Status
-
-[![continuous-integration](https://github.com/acostajs/vanier-custom-keyboard-collective/actions/workflows/ci.yml/badge.svg)](https://github.com/acostajs/vanier-custom-keyboard-collective/actions/workflows/ci.yml)
-![Coverage](https://img.shields.io/badge/coverage-81%25-brightgreen)
+The goal of this test suite is to demonstrate a complete QA strategy for a Django application. It includes tests for business logic, application workflows, REST APIs, browser automation, and performance.
 
 ---
 
-## Test Architecture & Organization
+# Test Types
 
-The tests are organized logically inside the `tests/` directory as follows:
+The project includes several types of automated tests.
 
-```
-tests/
-├── api/             # API Integration tests using `requests`
-├── docs/            # Testing documentation (this file)
-├── e2e/             # End-to-End User Journey tests using Playwright & Page Object Model
-├── integration/     # Service/Flow integration tests (e.g. checkout & cart flow)
-├── smoke/           # Playwright tests for server & page health checks
-├── unit/            # Classless unit tests for models, forms, and business logic
-└── conftest.py      # Centralized pytest configuration and global fixtures
-```
-
-### 1. Unit Tests (`tests/unit/`)
-These verify the lowest levels of code isolation (e.g., model logic, helper functions, utility validations). 
-* **Guidelines**: No class structures are allowed. All test suites are structured as standalone classless functions.
-* **Key Files**:
-  - `test_account.py` (Account and wishlist logic)
-  - `test_cart.py` (Order, Cart, and CartItem models)
-  - `test_inventory.py` (Category and Product properties)
-  - `test_review.py` (Reviews, comments, voting, and flagging constraints)
-  - `test_helpers.py` (Price conversion and parsing utilities)
-
-### 2. Integration Tests (`tests/integration/`)
-These test flows across multiple database models and services (e.g., checking catalog searching & filtering, adding items, and validating stripe checkout redirect flows).
-* **Key Files**:
-  - `test_cart_flow.py`
-
-### 3. API Integration Tests (`tests/api/`)
-These make standard HTTP loopback requests against a live test server using the `requests` library. They verify request-response cycles, status codes, payload structures, session preservation, and CSRF token handling.
-* **Key Files**:
-  - `test_catalog_api.py` (Category/Product search and retrieval)
-  - `test_cart_api.py` (Cart adding, updates, clearing, and checkout session endpoint)
-  - `test_account_review_api.py` (User registration, login, logout, and authenticated reviews)
-
-### 4. End-to-End (E2E) Tests (`tests/e2e/`)
-These test real browser scenarios using Playwright, simulating user actions on front-end components. They follow the Page Object Model (POM) pattern.
-* **Key Files**:
-  - `pages/` (POM declarations)
-  - `test_guest_shopping_journey.py` (Full guest flow from catalog to cart)
-  - `test_user_auth_journey.py` (Register, login, account dashboard checks, and logout)
-
-### 5. Smoke Tests (`tests/smoke/`)
-These utilize Playwright to quickly run page-load health checks against critical system routes, ensuring that pages respond with HTTP 200 and render the required headings.
-* **Key Files**:
-  - `test_server_health.py` (Homepage, Category, Product, Login, Registration, and Cart views)
+| Folder               | Purpose                                                                                                        |
+| -------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `tests/unit/`        | Tests for models, forms, helper functions, and business logic.                                                 |
+| `tests/integration/` | Tests that verify multiple parts of the application work together, including shopping cart and checkout flows. |
+| `tests/api/`         | Tests for REST API endpoints, authentication, request validation, and responses.                               |
+| `tests/e2e/`         | End-to-end browser tests using Playwright and the Page Object Model (POM).                                     |
+| `tests/smoke/`       | Fast browser tests that confirm the main pages load correctly.                                                 |
+| `tests/performance/` | Load testing with Locust to measure application performance under traffic.                                     |
 
 ---
 
-## Getting Started & Commands
+# Tools Used
 
-### Prerequisites
-Make sure you have `uv` installed, which serves as the package manager and runner:
+* pytest
+* Playwright
+* Requests
+* Locust
+* Coverage.py
+* Ruff
+* GitHub Actions
+* Lefthook
+
+---
+
+# Getting Started
+
+## Requirements
+
+* Python
+* Astral uv
+
+Install the project dependencies:
 
 ```bash
-# Verify uv is installed
-uv --version
-```
-
-### Install Dependencies
-To install the testing and project dependencies (configured in `pyproject.toml`):
-
-```bash
-# Sync and set up virtual environment
 uv sync
+```
 
-# Install Playwright browsers (chromium)
+Install the Playwright browsers:
+
+```bash
 uv run playwright install --with-deps chromium
 ```
 
-### Running Tests
+---
+# Running Tests
 
-To run the entire test suite:
+Run the complete test suite:
+
 ```bash
 uv run pytest
 ```
 
-To run a specific directory or test suite:
+Run the tests with a coverage summary in the terminal:
+
 ```bash
-# Run unit tests only
+uv run task coverage
+```
+
+Generate an HTML coverage report:
+
+```bash
+uv run task coverage-report
+```
+
+Run only the unit tests:
+
+```bash
 uv run pytest tests/unit/
+```
 
-# Run API integration tests only
+Run only the API tests:
+
+```bash
 uv run pytest tests/api/
+```
 
-# Run E2E tests only
+Run only the end-to-end tests:
+
+```bash
 uv run pytest tests/e2e/
+```
 
-# Run smoke tests only
+Run only the smoke tests:
+
+```bash
 uv run pytest tests/smoke/
 ```
 
-#### Coverage Report Summary
+---
 
-Below is the latest code coverage report generated by running `uv run pytest -o addopts="--cov=account --cov=cart --cov=inventory --cov=review --cov=shop --cov-report=term-missing -v"` (excluding files under the `tests/` directory):
+# Test Coverage
 
-```text
-Name                                   Stmts   Miss  Cover   Missing
---------------------------------------------------------------------
-account/__init__.py                        0      0   100%
-account/admin.py                           4      0   100%
-account/apps.py                            4      0   100%
-account/context_processors.py              9      0   100%
-account/forms.py                          12      0   100%
-account/migrations/0001_initial.py        10      0   100%
-account/migrations/__init__.py             0      0   100%
-account/models.py                         26      0   100%
-account/urls.py                            4      0   100%
-account/views.py                         148     71    52%   44, 80-82, 86-88, 102-104, 114-154, 159-181, 188-195, 202-206, 213-218, 225-228, 235-241
-cart/__init__.py                           0      0   100%
-cart/admin.py                              4      0   100%
-cart/apps.py                               4      0   100%
-cart/context_processors.py                 8      2    75%   11-12
-cart/helpers.py                           14      0   100%
-cart/migrations/0001_initial.py            8      0   100%
-cart/migrations/__init__.py                0      0   100%
-cart/models.py                           129     19    85%   95-109, 116, 120, 161-162
-cart/session_cart.py                      53      1    98%   71
-cart/templatetags/__init__.py              0      0   100%
-cart/templatetags/currency.py              9      0   100%
-cart/urls.py                               4      0   100%
-cart/views.py                             79     15    81%   80-81, 103-108, 114-118, 124-129
-cart/webhooks.py                          43     36    16%   11-92
-inventory/__init__.py                      0      0   100%
-inventory/admin.py                         4      0   100%
-inventory/apps.py                          4      0   100%
-inventory/context_processors.py            5      0   100%
-inventory/forms.py                         9      0   100%
-inventory/migrations/0001_initial.py       8      0   100%
-inventory/migrations/__init__.py           0      0   100%
-inventory/models.py                       87      8    91%   76, 78, 82, 84, 86, 88, 90, 125
-inventory/urls.py                          4      0   100%
-inventory/views.py                        41      0   100%
-review/__init__.py                         0      0   100%
-review/admin.py                            6      0   100%
-review/apps.py                             4      0   100%
-review/forms.py                           19      0   100%
-review/migrations/0001_initial.py          8      0   100%
-review/migrations/__init__.py              0      0   100%
-review/models.py                          78     12    85%   29, 36-37, 62, 77-78, 93, 110, 133-134, 139, 149
-review/urls.py                             4      0   100%
-review/views.py                           91     20    78%   52, 56, 63-66, 80, 89-92, 110-111, 118-121, 139, 143-144
-shop/__init__.py                           0      0   100%
-shop/asgi.py                                   4      4     0%   10-16
-shop/settings.py                              32      0   100%
-shop/urls.py                                   7      0   100%
-shop/wsgi.py                                   4      4     0%   10-16
---------------------------------------------------------------------
-TOTAL                                    991    192    81%
-```
+The latest coverage report shows **99% overall test coverage**.
 
+| Module    | Coverage |
+| --------- | -------- |
+| account   | 100%     |
+| cart      | 96%      |
+| inventory | 100%     |
+| review    | 100%     |
+| shop*     | 100%     |
+
+*Application entry points (`asgi.py` and `wsgi.py`) are not executed during normal test runs, so they are excluded from practical application coverage.
+
+**Overall Coverage: 99%**
 
 ---
 
-## Pre-commit Hooks
+# Performance Testing
 
-This project uses `lefthook` to format, lint, and run tests before every git commit.
+Performance testing is done with **Locust** to simulate users browsing products, logging in, adding items to the cart, and completing checkout.
+
+Start the interactive Locust dashboard:
 
 ```bash
-# Run pre-commit checks on all files manually
+uv run task perf
+```
+
+Run the headless performance test:
+
+```bash
+uv run task perf-report
+```
+
+Latest benchmark results:
+
+| Metric                | Result     |
+| --------------------- | ---------- |
+| Total requests        | **25**     |
+| Failure rate          | **0.00%**  |
+| Average response time | **41 ms**  |
+| Median response time  | **14 ms**  |
+| Maximum response time | **191 ms** |
+
+These results show that the application remained stable during the included load test.
+
+---
+
+# Code Quality
+
+The project uses **Lefthook** to automatically run quality checks before code is committed.
+
+The pre-commit workflow includes:
+
+* Ruff formatting
+* Ruff linting
+* Automated pytest execution
+
+Run the checks manually:
+
+```bash
 lefthook run pre-commit --all-files
 ```
-The pre-commit hook runs:
-- `ruff-format` (Code formatting)
-- `ruff-check` (Linting)
-- `pytest` (Test validation)

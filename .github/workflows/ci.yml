@@ -1,25 +1,50 @@
 name: continuous-integration
+
 on: [push]
+
 jobs:
   continuous-integration:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v4
+
       - uses: astral-sh/setup-uv@v5
+        with:
+          python-version-file: "pyproject.toml"
+
       - name: Check Formatting
         run: uv run ruff format --check
+
       - name: Lint Code
         run: uv run ruff check
-      - name: Install Playwright Browsers
-        run: uv run playwright install --with-deps chromium
+
+      # --- PLAYWRIGHT BROWSER HANDLING ---
+      - name: Cache Playwright Browsers
+        id: cache-playwright
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('pyproject.toml') }}
+
+      - name: Install Playwright Browsers & Deps (on Cache Miss)
+        if: steps.cache-playwright.outputs.cache-hit != 'true'
+        run: uv run playwright install --with-deps
+
+      - name: Install Playwright System Deps Only (on Cache Hit)
+        if: steps.cache-playwright.outputs.cache-hit == 'true'
+        run: uv run playwright install-deps
+      # -----------------------------------
+
       - name: Run Tests
         run: uv run task coverage-ci
         env:
+          DJANGO_SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
           STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
           STRIPE_WEBHOOK_SECRET: ${{ secrets.STRIPE_WEBHOOK_SECRET }}
-      - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v5
+          DJANGO_DEBUG: "False"
+
+      - name: Upload Coverage to Coveralls
+        uses: coverallsapp/github-action@v2
         with:
-          files: ./coverage.xml
-          fail_ci_if_error: true
-          token: ${{ secrets.CODECOV_TOKEN }}
+          file: ./coverage.xml

@@ -40,4 +40,9 @@ asyncio_mode = "auto"
 asyncio_default_fixture_loop_scope = "function"
 
 [tool.taskipy.tasks]
+perf = "locust -f tests/performance/locustfile.py --host http://127.0.0.1:8000"
+perf-report = "locust -f tests/performance/locustfile.py --host http://127.0.0.1:8000 --headless -t 2m --html tests/docs/performance/report.html"
+coverage = "pytest --cov=account --cov=cart --cov=contact --cov=shop --cov-report=term-missing"
+coverage-report = "pytest --cov=account --cov=cart --cov=contact --cov=shop --cov-report=html"
 coverage-ci = "pytest --cov=account --cov=cart --cov=contact --cov=shop --cov-report=xml"
+start = "uv run manage.py runserver"
