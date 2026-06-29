@@ -10,6 +10,7 @@ dependencies = [
     "stripe>=13.2.0",
     "python-dotenv>=1.2.1",
     "requests>=2.32.0",
+    "locust>=2.44.4",
 ]
 
 [tool.pyright]
@@ -27,6 +28,7 @@ dev = [
     "pytest-playwright>=0.6.0",
     "pytest>=8.3.0",
     "ruff>=0.13.0",
+    "taskipy>=1.14.1",
 ]
 
 [tool.pytest.ini_options]
@@ -36,3 +38,6 @@ pythonpath = [".", "tests/e2e", "tests/e2e/pages"]
 addopts = "--browser chromium -v --cov=account --cov=cart --cov=inventory --cov=review --cov-report=term-missing"
 asyncio_mode = "auto"
 asyncio_default_fixture_loop_scope = "function"
+
+[tool.taskipy.tasks]
+coverage-ci = "pytest --cov=account --cov=cart --cov=contact --cov=shop --cov-report=xml"

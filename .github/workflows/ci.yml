@@ -13,7 +13,13 @@ jobs:
       - name: Install Playwright Browsers
         run: uv run playwright install --with-deps chromium
       - name: Run Tests
-        run: uv run pytest -o addopts="-v"
+        run: uv run task coverage-ci
         env:
           STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
           STRIPE_WEBHOOK_SECRET: ${{ secrets.STRIPE_WEBHOOK_SECRET }}
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          files: ./coverage.xml
+          fail_ci_if_error: true
+          token: ${{ secrets.CODECOV_TOKEN }}
