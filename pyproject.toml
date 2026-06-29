@@ -7,17 +7,9 @@ requires-python = ">=3.13"
 dependencies = [
     "django>=5.2.6",
     "pillow>=11.3.0",
-    "ruff>=0.13.0",
     "stripe>=13.2.0",
     "python-dotenv>=1.2.1",
-    "pytest>=8.3.0",
-    "pytest-django>=4.9.0",
-    "playwright>=1.48.0",
-    "pytest-playwright>=0.6.0",
-    "faker>=25.8.0",
-    "pytest-asyncio>=0.23.0",
     "requests>=2.32.0",
-    "pytest-cov>=4.1.0",
 ]
 
 [tool.pyright]
@@ -26,5 +18,21 @@ venv = ".venv"
 
 [dependency-groups]
 dev = [
+    "faker>=25.8.0",
     "lefthook>=2.1.9",
+    "playwright>=1.48.0",
+    "pytest-asyncio>=0.23.0",
+    "pytest-cov>=4.1.0",
+    "pytest-django>=4.9.0",
+    "pytest-playwright>=0.6.0",
+    "pytest>=8.3.0",
+    "ruff>=0.13.0",
 ]
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "shop.settings"
+python_files = ["test_*.py", "*_tests.py"]
+pythonpath = [".", "tests/e2e", "tests/e2e/pages"]
+addopts = "--browser chromium -v --cov=account --cov=cart --cov=inventory --cov=review --cov=shop --cov-report=term-missing"
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
