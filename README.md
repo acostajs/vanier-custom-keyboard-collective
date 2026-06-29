@@ -1,6 +1,6 @@
 # Custom Keyboard Collective | Django QA Automation Showcase
 
-A Django e-commerce application built to showcase modern **Software QA and Test Automation** practices. [![codecov](https://codecov.io/gh/acostajs/keyboard-collective-qa-showcase/graph/badge.svg)](https://codecov.io/gh/acostajs/keyboard-collective-qa-showcase)
+A Django e-commerce application built to showcase modern **Software QA and Test Automation** practices. [![Coverage Status](https://coveralls.io/repos/github/acostajs/keyboard-collective-qa-showcase/badge.svg)](https://coveralls.io/github/acostajs/keyboard-collective-qa-showcase)
 
 The project demonstrates how to build and maintain a reliable Python application using automated testing, continuous integration, static analysis, and performance testing. It includes a complete testing strategy covering unit, integration, API, smoke, and end-to-end testing.
 
