@@ -115,12 +115,26 @@ class Order(models.Model):
         if not cart_items:
             return None, None
 
+        # Normalize both SessionCart items (dicts) and DB Cart items (CartItem instances)
+        normalized_items = []
+        for item in cart_items:
+            if isinstance(item, dict):
+                normalized_items.append(item)
+            else:
+                normalized_items.append(
+                    {
+                        "product": item.product,
+                        "quantity": item.quantity,
+                        "unit_cents": item.unit_cents,
+                    }
+                )
+
         order = cls(total_cents=cart.subtotal_cents())
         if request.user.is_authenticated:
             order.user = request.user
         order.save()
 
-        for item in cart_items:
+        for item in normalized_items:
             OrderItem.objects.create(
                 order=order,
                 product=item["product"],
@@ -129,7 +143,7 @@ class Order(models.Model):
             )
 
         line_items = []
-        for item in cart_items:
+        for item in normalized_items:
             line_items.append(
                 {
                     "price_data": {

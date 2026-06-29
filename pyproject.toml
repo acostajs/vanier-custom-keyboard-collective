@@ -33,6 +33,6 @@ dev = [
 DJANGO_SETTINGS_MODULE = "shop.settings"
 python_files = ["test_*.py", "*_tests.py"]
 pythonpath = [".", "tests/e2e", "tests/e2e/pages"]
-addopts = "--browser chromium -v --cov=account --cov=cart --cov=inventory --cov=review --cov=shop --cov-report=term-missing"
+addopts = "--browser chromium -v --cov=account --cov=cart --cov=inventory --cov=review --cov-report=term-missing"
 asyncio_mode = "auto"
 asyncio_default_fixture_loop_scope = "function"

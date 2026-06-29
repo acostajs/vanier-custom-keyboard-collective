@@ -16,7 +16,7 @@ def stripe_webhook(request):
         event = stripe.Webhook.construct_event(
             payload, sig_header, os.environ["STRIPE_WEBHOOK_SECRET"]
         )
-    except (ValueError, stripe.error.SignatureVerificationError):
+    except (ValueError, stripe.SignatureVerificationError):
         return HttpResponse(status=400)
 
     if (
