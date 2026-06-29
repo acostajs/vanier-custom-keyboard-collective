@@ -1,4 +1,4 @@
-from django.db import models, IntegrityError
+from django.db import models, IntegrityError, transaction
 from inventory.models import Product
 from django.core.validators import MinValueValidator, MaxValueValidator
 from account.models import Account
@@ -29,9 +29,10 @@ class Review(models.Model):
             return None, "You must purchase this product to leave a review."
 
         try:
-            review = cls.objects.create(
-                user=user, product=product, rating=rating, message=message
-            )
+            with transaction.atomic():
+                review = cls.objects.create(
+                    user=user, product=product, rating=rating, message=message
+                )
             return review, "Thank you for your review."
         except IntegrityError:
             return None, "You have already reviewed this product."
@@ -72,7 +73,8 @@ class Vote(models.Model):
     def create_vote(cls, user, review):
         """Validate that there is a unique vote per user per review and raise error message."""
         try:
-            vote = cls.objects.create(user=user, review=review)
+            with transaction.atomic():
+                vote = cls.objects.create(user=user, review=review)
             return vote, "Thanks for your feedback."
         except IntegrityError:
             return None, "You have already voted on this review."
@@ -127,9 +129,9 @@ class Flag(models.Model):
     def create_flag(cls, user, review, flag_type):
         """Validate if there is an unique flag per user and raise error message."""
         try:
-            return cls.objects.create(
-                user=user, review=review, flag_type=flag_type
-            ), "Thank you for flagging this review."
+            with transaction.atomic():
+                flag = cls.objects.create(user=user, review=review, flag_type=flag_type)
+            return flag, "Thank you for flagging this review."
         except IntegrityError:
             return None, "You have already flagged this review."
 
