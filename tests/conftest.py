@@ -442,3 +442,25 @@ def models_logic_category(db):
         name="Testing",
         description="Test Category",
     )
+
+
+def pytest_addoption(parser: pytest.Parser) -> None:
+    parser.addoption(
+        "--browser-engine",
+        action="store",
+        default="chrome",
+        choices=["chrome", "safari", "firefox"],
+        help="Browser engine to use: chrome (chromium), safari (webkit), or firefox",
+    )
+
+
+def pytest_configure(config: pytest.Config) -> None:
+    engine = config.getoption("--browser-engine")
+    mapping = {
+        "chrome": "chromium",
+        "safari": "webkit",
+        "firefox": "firefox",
+    }
+    playwright_browser = mapping.get(engine)
+    if playwright_browser:
+        config.option.browser = [playwright_browser]
