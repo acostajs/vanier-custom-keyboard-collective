@@ -15,6 +15,7 @@ class BasePage:
         self.cart_link: Locator = page.locator('a[href*="/cart/"]')
         self.login_link: Locator = page.locator('a[href*="/account/login/"]')
         self.register_link: Locator = page.locator('a[href*="/account/registration/"]')
+        self.wishlist_link: Locator = page.locator('a[href*="/account/wishlist/"]')
         self.account_link: Locator = page.locator(
             'a[href$="/account/"]'
         )  # matches ending with /account/ to avoid login/registration
