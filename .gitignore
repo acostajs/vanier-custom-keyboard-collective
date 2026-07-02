@@ -31,3 +31,7 @@ out/
 .coverage
 coverage.xml
 htmlcov/
+
+# Test recorded videos
+tests/e2e/videos/
+
